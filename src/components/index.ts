@@ -3,4 +3,6 @@ export * from './ui/top-menu/top-menu';
 export * from './ui/not-found/page-not-found';
 export * from './ui/front-page/front-home-page'
 export * from './ui/trending-products/trending-products'
+export * from './ui/perks-section/perks-section';
+
 
