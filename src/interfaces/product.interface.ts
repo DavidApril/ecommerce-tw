@@ -4,6 +4,6 @@ export interface Product {
     color: string;
     price: string;
     href: string;
-    imageSrc: string;
+    imageSrc: string[];
     imageAlt: string;
 }
