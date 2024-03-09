@@ -1,4 +1,8 @@
+import { NavegationBar } from "@/components";
 
 export default function ShopLayout({children}:{ children: React.ReactNode}){
-    return <main>{children}</main>
+    return <main>
+        <NavegationBar/>
+        {children}
+        </main>
 }
