@@ -3,7 +3,7 @@ import { Fragment, useState } from 'react'
 import { Dialog, Popover, Tab, Transition } from '@headlessui/react'
 import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon, UserIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { classNames } from '@/utils/ui'
-import { navigation } from './config'
+import { navigation } from '@/seed/seed'
 
 export function NavegationBar() {
   const [open, setOpen] = useState(false)
