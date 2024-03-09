@@ -1,17 +1,20 @@
 'use client'
-import { Fragment, useState } from 'react'
+import { Fragment } from 'react'
 import { Dialog, Popover, Tab, Transition } from '@headlessui/react'
 import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon, UserIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { classNames } from '@/utils/ui'
 import { navigation } from '@/seed/seed'
+import { useUIStore } from '@/store/ui/ui.store'
 
 export function NavegationBar() {
-  const [open, setOpen] = useState(false)
+
+  const { closeSideMenu, isSideMenuOpen, openSideMenu } = useUIStore();
+
   return (
     <div className="bg-white">
       {/* Mobile menu */}
-      <Transition.Root show={open} as={Fragment}>
-        <Dialog as="div" className="relative z-40 lg:hidden" onClose={setOpen}>
+      <Transition.Root show={isSideMenuOpen} as={Fragment}>
+        <Dialog as="div" className="relative z-40 lg:hidden" onClose={() => closeSideMenu()}>
           <Transition.Child
             as={Fragment}
             enter="transition-opacity ease-linear duration-300"
@@ -39,7 +42,7 @@ export function NavegationBar() {
                   <button
                     type="button"
                     className="-m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400"
-                    onClick={() => setOpen(false)}
+                    onClick={() => closeSideMenu()}
                   >
                     <span className="sr-only">Close menu</span>
                     <XMarkIcon className="h-6 w-6" aria-hidden="true" />
@@ -160,7 +163,7 @@ export function NavegationBar() {
                 <button
                   type="button"
                   className="-ml-2 rounded-md bg-white p-2 text-gray-400"
-                  onClick={() => setOpen(true)}
+                  onClick={() => openSideMenu()}
                 >
                   <span className="sr-only">Open menu</span>
                   <Bars3Icon className="h-6 w-6" aria-hidden="true" />
