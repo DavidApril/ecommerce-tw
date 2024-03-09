@@ -5,4 +5,6 @@ export * from './ui/front-page/front-home-page'
 export * from './ui/trending-products/trending-products'
 export * from './ui/perks-section/perks-section';
 
+export * from './products/product-grid/product-grid'
+
 

@@ -1,4 +1,6 @@
-export const trendingProducts = [
+import { Product } from "@/interfaces";
+
+export const trendingProducts: Product[] = [
     {
       id: 1,
       name: 'Leather Long Wallet',
