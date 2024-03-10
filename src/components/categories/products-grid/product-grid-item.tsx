@@ -1,29 +1,44 @@
+'use client';
+import { useState } from "react";
 import { Product } from "@/interfaces"
-
+import Image from "next/image";
+import Link from "next/link";
 
 interface Props {
     product: Product;
 }
 
 export const ProductGridItem = ({ product }: Props) => {
+
+    const [displayImage, setDisplayImage] = useState<string>(product.imageSrc[0])
+
     return (
         <div
             key={product.id}
-            className="group relative flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white"
+            className="group relative hover:scale-105 transition-all flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white"
+            onMouseEnter={() => {
+                if (product.imageSrc[1]) setDisplayImage(product.imageSrc[1])
+            }}
+            onMouseLeave={() => setDisplayImage(product.imageSrc[0])}
         >
             <div className="aspect-h-4 aspect-w-3 bg-gray-200 sm:aspect-none group-hover:opacity-75 sm:h-96">
-                <img
-                    src={product.imageSrc[0]}
-                    alt={product.imageAlt}
-                    className="h-full w-full object-cover object-center sm:h-full sm:w-full"
-                />
+                <Link href={`/product/${product.id}`}>
+                    <Image
+                        src={displayImage}
+                        alt={product.imageAlt}
+                        className="h-full w-full object-cover object-center sm:h-full sm:w-full"
+                        width={500}
+                        height={500}
+
+                    />
+                </Link>
             </div>
             <div className="flex flex-1 flex-col space-y-2 p-4">
                 <h3 className="text-sm font-medium text-gray-900">
-                    <a href={product.href}>
+                    <Link className="hover:text-blue-800" href={`/product/${product.id}`}>
                         <span aria-hidden="true" className="absolute inset-0" />
                         {product.name}
-                    </a>
+                    </Link>
                 </h3>
                 <p className="text-sm text-gray-500">{product.description}</p>
                 <div className="flex flex-1 flex-col justify-end">

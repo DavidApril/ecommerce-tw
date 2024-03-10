@@ -25,7 +25,7 @@ export const ProductGridItem = ({ product }: Props) => {
                         src={displayImage}
                         alt={product.imageAlt}
                         className="h-full w-full object-cover object-center z-50"
-                        width={500}
+                        width={500} 
                         height={500}
                     />
                 </Link>
