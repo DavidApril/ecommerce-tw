@@ -1,14 +1,27 @@
 export interface Product {
-  id: number
   name: string
-  category?: ValidCategories;
-  color?: string
   price: string
-  href: string
-  imageSrc: string[]
-  imageAlt: string
-  description?: string
-  options?: string
+  rating: number
+  images: Image[]
+  colors: Color[]
+  description: string
+  details: Detail[]
 }
 
-export type ValidCategories = 'utils' | 'clothes'
+export interface Image {
+  id: number
+  name: string
+  src: string
+  alt: string
+}
+
+export interface Color {
+  name: string
+  bgColor: string
+  selectedColor: string
+}
+
+export interface Detail {
+  name: string
+  items: string[]
+}

@@ -22,7 +22,7 @@ export const ProductGridItem = ({ product }: Props) => {
             onMouseLeave={() => setDisplayImage(product.imageSrc[0])}
         >
             <div className="aspect-h-4 aspect-w-3 bg-gray-200 sm:aspect-none group-hover:opacity-75 sm:h-96">
-                <Link href={`/product/${product.id}`}>
+                <Link href={`/product/${product.name}`}>
                     <Image
                         src={displayImage}
                         alt={product.imageAlt}
@@ -35,7 +35,7 @@ export const ProductGridItem = ({ product }: Props) => {
             </div>
             <div className="flex flex-1 flex-col space-y-2 p-4">
                 <h3 className="text-sm font-medium text-gray-900">
-                    <Link className="hover:text-blue-800" href={`/product/${product.id}`}>
+                    <Link className="hover:text-blue-800" href={`/product/${product.name}`}>
                         <span aria-hidden="true" className="absolute inset-0" />
                         {product.name}
                     </Link>

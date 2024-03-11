@@ -186,41 +186,43 @@ export const navigation: Navigation = {
   ],
 }
 
-export const Products: Product[] = [
-  {
-    id: 1,
-    name: 'Leather Long Wallet',
-    color: 'Natural',
-    price: '$75',
-    href: '#',
-    category: 'utils',
-    imageSrc: ['https://tailwindui.com/img/ecommerce-images/home-page-04-trending-product-02.jpg', 'https://tailwindui.com/img/ecommerce-images/home-page-04-collection-02.jpg'],
-    imageAlt: 'Hand stitched, orange leather long wallet.',
-  },
-  {
-    id: 2,
-    name: 'Basic Tee 8-Pack',
-    href: '#',
-    price: '$256',
-    description: 'Get the full lineup of our Basic Tees. Have a fresh shirt all week, and an extra for laundry day.',
-    category: 'clothes',
-    options: '8 colors',
-    imageSrc: ['https://tailwindui.com/img/ecommerce-images/category-page-02-image-card-01.jpg'],
-    imageAlt: 'Eight shirts arranged on table in black, olive, grey, blue, white, red, mustard, and green.',
-  },
-  {
-    id: 3,
-    name: 'Basic Tee',
-    href: '#',
-    price: '$32',
-    category: 'clothes',
-    description: 'Look like a visionary CEO and wear the same black t-shirt every day.',
-    options: 'Black',
-    imageSrc: ['https://tailwindui.com/img/ecommerce-images/category-page-02-image-card-02.jpg', 'https://tailwindui.com/img/ecommerce-images/home-page-04-trending-product-02.jpg',],
-    imageAlt: 'Front of plain black t-shirt.',
-  },
-  // More products...
-]
+export const products: Product[] = [{
+  name: 'Zip Tote Basket',
+  price: '$140',
+  rating: 4,
+  images: [
+      {
+          id: 1,
+          name: 'Angled view',
+          src: 'https://tailwindui.com/img/ecommerce-images/product-page-03-product-01.jpg',
+          alt: 'Angled front view with bag zipped and handles upright.',
+      },
+      // More images...
+  ],
+  colors: [
+      { name: 'Washed Black', bgColor: 'bg-gray-700', selectedColor: 'ring-gray-700' },
+      { name: 'White', bgColor: 'bg-white', selectedColor: 'ring-gray-400' },
+      { name: 'Washed Gray', bgColor: 'bg-gray-500', selectedColor: 'ring-gray-500' },
+  ],
+  description: `
+  <p>The Zip Tote Basket is the perfect midpoint between shopping tote and comfy backpack. With convertible straps, you can hand carry, should sling, or backpack this convenient and spacious bag. The zip top and durable canvas construction keeps your goods protected for all-day use.</p>
+`,
+  details: [
+      {
+          name: 'Features',
+          items: [
+              'Multiple strap configurations',
+              'Spacious interior with top zip',
+              'Leather handle and tabs',
+              'Interior dividers',
+              'Stainless strap loops',
+              'Double stitched construction',
+              'Water-resistant',
+          ],
+      },
+      // More sections...
+  ],
+}]
 
 export const filters: Filter[] = [
   {
