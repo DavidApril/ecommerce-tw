@@ -2,14 +2,20 @@
 import { Products, filters } from '@/seed/seed'
 import { MobileFilterMenu } from '@/components/ui/mobile-filter/mobile-filter'
 import { AsideBar, ProductGridCategories, Title } from '@/components'
+import { ValidCategories } from '@/interfaces'
 
 interface Props {
   params: {
-    id: string
+    id: ValidCategories
   }
 }
 
 export default function ({ params }: Props) {
+
+  const { id } = params; 
+
+  const productByCategory = Products.filter( product => product.category === id)
+
   return (
     <div className="bg-white">
       <div>
@@ -18,7 +24,7 @@ export default function ({ params }: Props) {
 
         <main className="mx-auto max-w-2xl px-4 lg:max-w-7xl lg:px-8">
           <Title
-            title='New Arrivals'
+            title={`Products of ${ id }`}
             subtitle='Checkout out the latest release of Basic Tees, new and improved with four openings!'
           />
 
@@ -30,7 +36,7 @@ export default function ({ params }: Props) {
                 Products
               </h2>
 
-              <ProductGridCategories products={Products}/>
+              <ProductGridCategories products={ productByCategory }/>
 
             </section>
           </div>
