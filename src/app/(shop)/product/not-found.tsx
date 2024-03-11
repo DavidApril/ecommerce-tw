@@ -1,5 +1,5 @@
-import { NotFoundPage } from "@/components";
+import { ProductNotFound } from "@/components";
 
 export default function(){
-    return <NotFoundPage/>
+    return <ProductNotFound/>
 }

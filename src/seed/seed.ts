@@ -1,4 +1,4 @@
-import { Filter, Navigation, Product } from "@/interfaces";
+import { Filter, Navigation, Product, RelatedProducts } from "@/interfaces";
 
 export const navigation: Navigation = {
   categories: [
@@ -188,7 +188,7 @@ export const navigation: Navigation = {
 
 export const products: Product[] = [
   {
-    id: crypto.randomUUID(),
+    id: '1',
     name: 'Zip Tote Basket',
     category: 'clothes',
     price: '$140',
@@ -233,9 +233,8 @@ export const products: Product[] = [
       // More sections...
     ],
   },
-  // Agregar más productos aquí...
   {
-    id: crypto.randomUUID(),
+    id: '2',
     name: 'Casual Messenger Bag',
     category: 'clothes',
     price: '$90',
@@ -259,9 +258,8 @@ export const products: Product[] = [
       // Detalles del Casual Messenger Bag...
     ],
   },
-  // Puedes seguir añadiendo más objetos de producto según sea necesario...
+  // Agregar más productos aquí...
 ];
-
 
 export const filters: Filter[] = [
   {
@@ -299,4 +297,17 @@ export const filters: Filter[] = [
       { value: '2xl', label: '2XL' },
     ],
   },
+]
+
+export const relatedProducts: RelatedProducts[] = [
+  {
+      id: 1,
+      name: 'Zip Tote Basket',
+      color: 'White and black',
+      href: '#',
+      imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-03-related-product-01.jpg',
+      imageAlt: 'Front of zip tote bag with white canvas, black canvas straps and handle, and black zipper pulls.',
+      price: '$140',
+  },
+  // More products...
 ]

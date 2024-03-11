@@ -7,6 +7,9 @@ export * from './ui/trending-products/trending-products'
 export * from './ui/perks-section/perks-section';
 
 export * from './product/errors/page-not-found'
+export * from './product/image-gallery/image-gallery';
+export * from './product/product-info/product-info';
+export * from './product/also-bought/also-bought';
 
 export * from './products/product-grid/product-grid'
 export * from './products/product-grid/product-grid-item'

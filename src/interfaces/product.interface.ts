@@ -30,3 +30,13 @@ export interface Detail {
   name: string
   items: string[]
 }
+
+export interface RelatedProducts {
+  id: number
+  name: string
+  color: string
+  href: string
+  imageSrc: string
+  imageAlt: string
+  price: string
+}
