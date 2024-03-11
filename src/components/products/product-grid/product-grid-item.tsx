@@ -1,7 +1,6 @@
 'use client';
-
 import { useState } from "react";
-import { Product } from "@/interfaces";
+import { Image as ImageInterface, Product } from "@/interfaces"
 import Image from "next/image";
 import Link from "next/link";
 
@@ -11,33 +10,42 @@ interface Props {
 
 export const ProductGridItem = ({ product }: Props) => {
 
-    const [displayImage, setDisplayImage] = useState<string>(product.imageSrc[0])
+    const [displayImage, setDisplayImage] = useState<ImageInterface>(product.images[0])
 
     return (
         <div
-            onMouseEnter={() => setDisplayImage(product.imageSrc[1])}
-            onMouseLeave={() => setDisplayImage(product.imageSrc[0])}
-            className="group relative">
-            <div
-                className="h-56 w-full rounded-md group-hover:opacity-75 lg:h-72 xl:h-80">
-                <Link href={`/product/${product.id}`}>
+            key={product.id}
+            className="group relative hover:scale-105 transition-all flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white"
+            onMouseEnter={() => {
+                if (product.images[1]) setDisplayImage(product.images[1])
+            }}
+            onMouseLeave={() => setDisplayImage(product.images[0])}
+        >
+            <div className="aspect-h-4 aspect-w-3 bg-gray-200 sm:aspect-none group-hover:opacity-75 sm:h-96">
+                <Link href={`/product/${product.name}`}>
                     <Image
-                        src={displayImage}
-                        alt={product.imageAlt}
-                        className="h-full w-full object-cover object-center z-50"
-                        width={500} 
+                        src={ displayImage.src }
+                        alt={ displayImage.alt }
+                        className="h-full w-full object-cover object-center sm:h-full sm:w-full"
+                        width={500}
                         height={500}
+
                     />
                 </Link>
             </div>
-            <Link className="" href={`/product/${product.id}`}>
-                <h3 className="hover:text-blue-800 mt-4 text-sm text-gray-700">
-                    <span className="absolute inset-0" />
-                    {product.name}
+            <div className="flex flex-1 flex-col space-y-2 p-4">
+                <h3 className="text-sm font-medium text-gray-900">
+                    <Link className="hover:text-blue-800" href={`/product/${product.name}`}>
+                        <span aria-hidden="true" className="absolute inset-0" />
+                        {product.name}
+                    </Link>
                 </h3>
-            </Link>
-            <p className="mt-1 text-sm text-gray-500">{product.color}</p>
-            <p className="mt-1 text-sm font-medium text-gray-900">{product.price}</p>
+                <p className="text-sm text-gray-500">{product.description}</p>
+                <div className="flex flex-1 flex-col justify-end">
+                    <p className="text-sm italic text-gray-500">{product.options}</p>
+                    <p className="text-base font-medium text-gray-900">{product.price}</p>
+                </div>
+            </div>
         </div>
     )
 }

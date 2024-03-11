@@ -9,5 +9,5 @@ export * from './ui/perks-section/perks-section';
 export * from './products/product-grid/product-grid'
 export * from './categories/aside-bar/aside-bar'
 export * from './categories/products-grid/products-grid'
-export * from './categories/products-grid/product-grid-item'
+export * from './products/product-grid/product-grid-item'
 

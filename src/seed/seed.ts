@@ -186,52 +186,82 @@ export const navigation: Navigation = {
   ],
 }
 
-export const products: Product[] = [{
-  id: crypto.randomUUID(),
-  name: 'Zip Tote Basket',
-  category: 'clothes',
-  price: '$140',
-  options: '8 colors',
-  rating: 4,
-  images: [
-    {
-      id: 1,
-      name: 'Angled view',
-      src: 'https://tailwindui.com/img/ecommerce-images/product-page-03-product-01.jpg',
-      alt: 'Angled front view with bag zipped and handles upright.',
-    },
-    {
-      id: 2,
-      name: 'Angled view',
-      src: 'https://tailwindui.com/img/ecommerce-images/product-page-03-product-02.jpg',
-      alt: 'Angled front view with bag zipped and handles upright.',
-    },
-    // More images...
-  ],
-  colors: [
-    { name: 'Washed Black', bgColor: 'bg-gray-700', selectedColor: 'ring-gray-700' },
-    { name: 'White', bgColor: 'bg-white', selectedColor: 'ring-gray-400' },
-    { name: 'Washed Gray', bgColor: 'bg-gray-500', selectedColor: 'ring-gray-500' },
-  ],
-  description: `
-  The Zip Tote Basket is the perfect midpoint between shopping tote and comfy backpack. With convertible straps, you can hand carry, should sling, or backpack this convenient and spacious bag. The zip top and durable canvas construction keeps your goods protected for all-day use.
-`,
-  details: [
-    {
-      name: 'Features',
-      items: [
-        'Multiple strap configurations',
-        'Spacious interior with top zip',
-        'Leather handle and tabs',
-        'Interior dividers',
-        'Stainless strap loops',
-        'Double stitched construction',
-        'Water-resistant',
-      ],
-    },
-    // More sections...
-  ],
-}]
+export const products: Product[] = [
+  {
+    id: crypto.randomUUID(),
+    name: 'Zip Tote Basket',
+    category: 'clothes',
+    price: '$140',
+    options: '8 colors',
+    rating: 4,
+    images: [
+      {
+        id: 1,
+        name: 'Angled view',
+        src: 'https://tailwindui.com/img/ecommerce-images/product-page-03-product-01.jpg',
+        alt: 'Angled front view with bag zipped and handles upright.',
+      },
+      {
+        id: 2,
+        name: 'Angled view',
+        src: 'https://tailwindui.com/img/ecommerce-images/product-page-03-product-02.jpg',
+        alt: 'Angled front view with bag zipped and handles upright.',
+      },
+      // More images...
+    ],
+    colors: [
+      { name: 'Washed Black', bgColor: 'bg-gray-700', selectedColor: 'ring-gray-700' },
+      { name: 'White', bgColor: 'bg-white', selectedColor: 'ring-gray-400' },
+      { name: 'Washed Gray', bgColor: 'bg-gray-500', selectedColor: 'ring-gray-500' },
+    ],
+    description: `
+    The Zip Tote Basket is the perfect midpoint between shopping tote and comfy backpack. With convertible straps, you can hand carry, should sling, or backpack this convenient and spacious bag. The zip top and durable canvas construction keeps your goods protected for all-day use.
+  `,
+    details: [
+      {
+        name: 'Features',
+        items: [
+          'Multiple strap configurations',
+          'Spacious interior with top zip',
+          'Leather handle and tabs',
+          'Interior dividers',
+          'Stainless strap loops',
+          'Double stitched construction',
+          'Water-resistant',
+        ],
+      },
+      // More sections...
+    ],
+  },
+  // Agregar más productos aquí...
+  {
+    id: crypto.randomUUID(),
+    name: 'Casual Messenger Bag',
+    category: 'clothes',
+    price: '$90',
+    options: '4 colors',
+    rating: 5,
+    images: [
+      {
+        id: 1,
+        name: 'Angled view',
+        src: 'https://tailwindui.com/img/ecommerce-images/product-page-03-product-03.jpg',
+        alt: 'Angled front view with bag zipped and handles upright.',
+      },
+    ],
+    colors: [
+      // Colores del Casual Messenger Bag...
+    ],
+    description: `
+    The Casual Messenger Bag is a versatile and stylish bag for everyday use. It features multiple pockets for organization, an adjustable shoulder strap, and a flap closure for added security. Whether you're heading to work or going out with friends, this bag is a perfect companion.
+  `,
+    details: [
+      // Detalles del Casual Messenger Bag...
+    ],
+  },
+  // Puedes seguir añadiendo más objetos de producto según sea necesario...
+];
+
 
 export const filters: Filter[] = [
   {

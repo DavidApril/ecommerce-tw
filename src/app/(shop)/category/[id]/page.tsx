@@ -1,8 +1,9 @@
 'use client'
 import { products, filters } from '@/seed/seed'
 import { MobileFilterMenu } from '@/components/ui/mobile-filter/mobile-filter'
-import { AsideBar, ProductGridCategories, Title } from '@/components'
 import { ValidCategory } from '@/interfaces'
+
+import { AsideBar, ProductGridCategories, Title } from '@/components'
 
 interface Props {
   params: {

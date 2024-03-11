@@ -1,5 +1,5 @@
 import { ProductGrid } from "@/components"
-import { Products } from "@/seed/seed"
+import { products } from "@/seed/seed"
 
 export const TrendinProducts = () => {
   return (
@@ -15,7 +15,7 @@ export const TrendinProducts = () => {
           </a>
         </div>
 
-        <ProductGrid products={Products} />
+        <ProductGrid products={products} />
 
         <div className="mt-8 text-sm md:hidden">
           <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">

@@ -1,5 +1,5 @@
 import { Product } from "@/interfaces"
-import { ProductGridItem } from "./product-grid-item";
+import { ProductGridItem } from "../../products/product-grid/product-grid-item";
 
 
 interface Props {
