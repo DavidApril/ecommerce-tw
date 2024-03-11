@@ -9,6 +9,9 @@ export * from './ui/perks-section/perks-section';
 export * from './product/errors/page-not-found'
 export * from './product/image-gallery/image-gallery';
 export * from './product/product-info/product-info';
+export * from './product/product-info/selectors/color-selector'
+export * from './product/product-info/reviews/reviews'
+export * from './product/product-info/details/details'
 export * from './product/also-bought/also-bought';
 
 export * from './products/product-grid/product-grid'
