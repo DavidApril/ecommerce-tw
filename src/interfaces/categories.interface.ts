@@ -8,3 +8,5 @@ export interface Filter {
     value: string
     label: string
   }
+
+export type ValidCategories = 'clothes' | 'utils' | 'food' 
