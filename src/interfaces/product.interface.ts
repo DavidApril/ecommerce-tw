@@ -1,8 +1,11 @@
 export interface Product {
+  id: string;
   name: string
+  category: ValidCategory;
   price: string
   rating: number
   images: Image[]
+  options: string
   colors: Color[]
   description: string
   details: Detail[]
@@ -25,3 +28,5 @@ export interface Detail {
   name: string
   items: string[]
 }
+
+export type ValidCategory = 'clothes' | 'utils' | 'food' 

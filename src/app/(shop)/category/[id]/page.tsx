@@ -1,12 +1,12 @@
 'use client'
-import { Products, filters } from '@/seed/seed'
+import { products, filters } from '@/seed/seed'
 import { MobileFilterMenu } from '@/components/ui/mobile-filter/mobile-filter'
 import { AsideBar, ProductGridCategories, Title } from '@/components'
-import { ValidCategories } from '@/interfaces'
+import { ValidCategory } from '@/interfaces'
 
 interface Props {
   params: {
-    id: ValidCategories
+    id: ValidCategory
   }
 }
 
@@ -14,7 +14,7 @@ export default function ({ params }: Props) {
 
   const { id } = params; 
 
-  const productByCategory = Products.filter( product => product.category === id)
+  const productByCategory = products.filter( product => product.category === id)
 
   return (
     <div className="bg-white">

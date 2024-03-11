@@ -1,6 +1,6 @@
 'use client';
 import { useState } from "react";
-import { Product } from "@/interfaces"
+import { Image as ImageInterface, Product } from "@/interfaces"
 import Image from "next/image";
 import Link from "next/link";
 
@@ -10,22 +10,22 @@ interface Props {
 
 export const ProductGridItem = ({ product }: Props) => {
 
-    const [displayImage, setDisplayImage] = useState<string>(product.imageSrc[0])
+    const [displayImage, setDisplayImage] = useState<ImageInterface>(product.images[0])
 
     return (
         <div
             key={product.id}
             className="group relative hover:scale-105 transition-all flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white"
             onMouseEnter={() => {
-                if (product.imageSrc[1]) setDisplayImage(product.imageSrc[1])
+                if (product.images[1]) setDisplayImage(product.images[1])
             }}
-            onMouseLeave={() => setDisplayImage(product.imageSrc[0])}
+            onMouseLeave={() => setDisplayImage(product.images[0])}
         >
             <div className="aspect-h-4 aspect-w-3 bg-gray-200 sm:aspect-none group-hover:opacity-75 sm:h-96">
                 <Link href={`/product/${product.name}`}>
                     <Image
-                        src={displayImage}
-                        alt={product.imageAlt}
+                        src={ displayImage.src }
+                        alt={ displayImage.alt }
                         className="h-full w-full object-cover object-center sm:h-full sm:w-full"
                         width={500}
                         height={500}
