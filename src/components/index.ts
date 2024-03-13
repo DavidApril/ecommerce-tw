@@ -14,6 +14,8 @@ export * from './product/product-info/reviews/reviews'
 export * from './product/product-info/details/details'
 export * from './product/also-bought/also-bought';
 
+export * from './cart/cart-item/cart-item'
+
 export * from './products/product-grid/product-grid'
 export * from './products/product-grid/product-grid-item'
 

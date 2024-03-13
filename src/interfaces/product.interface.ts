@@ -9,6 +9,7 @@ export interface Product {
   images: Image[]
   options: string
   colors: Color[]
+  size: Size
   description: string
   details: Detail[]
 }
@@ -40,3 +41,5 @@ export interface RelatedProducts {
   imageAlt: string
   price: string
 }
+
+export type Size = 'XL' | 'XS' | 'M' | 'L' | 'S'

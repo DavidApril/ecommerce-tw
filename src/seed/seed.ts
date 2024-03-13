@@ -194,6 +194,7 @@ export const products: Product[] = [
     price: '$140',
     options: '8 colors',
     rating: 4,
+    size: 'XL',
     images: [
       {
         id: 1,
@@ -239,6 +240,7 @@ export const products: Product[] = [
     category: 'clothes',
     price: '$90',
     options: '4 colors',
+    size: 'S',
     rating: 5,
     images: [
       {
@@ -249,7 +251,9 @@ export const products: Product[] = [
       },
     ],
     colors: [
-      // Colores del Casual Messenger Bag...
+      { name: 'Washed Black', bgColor: 'bg-gray-700', selectedColor: 'ring-gray-700' },
+      { name: 'White', bgColor: 'bg-white', selectedColor: 'ring-gray-400' },
+      { name: 'Washed Gray', bgColor: 'bg-gray-500', selectedColor: 'ring-gray-500' },
     ],
     description: `
     The Casual Messenger Bag is a versatile and stylish bag for everyday use. It features multiple pockets for organization, an adjustable shoulder strap, and a flap closure for added security. Whether you're heading to work or going out with friends, this bag is a perfect companion.
