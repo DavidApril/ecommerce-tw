@@ -1,7 +1,7 @@
-import { ProductGrid } from "@/components"
+import { Pagination, ProductGrid } from "@/components"
 import { products } from "@/seed/seed"
 
-export const TrendinProducts = () => {
+export const TrendingProducts = () => {
   return (
     <section aria-labelledby="trending-heading">
       <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8 lg:pt-32">
@@ -17,12 +17,16 @@ export const TrendinProducts = () => {
 
         <ProductGrid products={products} />
 
+        <Pagination totalPage={ 5 } />
+
         <div className="mt-8 text-sm md:hidden">
           <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
             Shop the collection
             <span aria-hidden="true"> &rarr;</span>
           </a>
-          P</div>
+          </div>
+
+
       </div>
     </section>
   )

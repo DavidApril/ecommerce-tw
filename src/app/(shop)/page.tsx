@@ -1,4 +1,4 @@
-import { FrontHomePage, PerksSection, TrendinProducts } from '@/components'
+import { FrontHomePage, PerksSection, TrendingProducts } from '@/components'
 
 export default function Example() {
   return (
@@ -8,7 +8,8 @@ export default function Example() {
         
         <FrontHomePage/>
 
-        <TrendinProducts/>
+        <TrendingProducts/>
+
 
         <PerksSection/>
 
