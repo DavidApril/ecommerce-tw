@@ -3,7 +3,7 @@ import { Fragment } from 'react'
 import { Dialog, Popover, Tab, Transition } from '@headlessui/react'
 import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon, UserIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { classNames } from '@/utils/ui'
-import { navigation } from '@/seed/seed'
+import { navigation } from '@/config/navegation'
 import { useUIStore } from '@/store/ui/ui.store'
 
 export function NavegationBar() {

@@ -1,5 +1,5 @@
 'use client'
-import { filters } from "@/seed/seed"
+import { filters } from "@/config/filters"
 import { useUIStore } from "@/store/ui/ui.store"
 import { classNames } from "@/utils/ui"
 import { Transition, Dialog, Disclosure } from "@headlessui/react"
