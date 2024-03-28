@@ -1,96 +1,152 @@
-import { Product, RelatedProducts } from "@/interfaces";
+import { Product, RelatedProducts } from "../interfaces";
 
 
 export const products: Product[] = [
   {
     id: '1',
-    name: 'Zip Tote Basket',
-    category: 'clothes',
-    price: '$140',
-    options: '8 colors',
-    rating: 4,
-    size: 'XL',
+    description: 'A classic crewneck t-shirt made from soft cotton fabric. Perfect for everyday wear.',
     images: [
-      {
-        id: 1,
-        name: 'Angled view',
-        src: 'https://tailwindui.com/img/ecommerce-images/product-page-03-product-01.jpg',
-        alt: 'Angled front view with bag zipped and handles upright.',
-      },
-      {
-        id: 2,
-        name: 'Angled view',
-        src: 'https://tailwindui.com/img/ecommerce-images/product-page-03-product-02.jpg',
-        alt: 'Angled front view with bag zipped and handles upright.',
-      },
-      // More images...
+      { id: 1, name: 'Front view', src: 'https://tailwindui.com/img/ecommerce-images/product-page-03-product-03.jpg', alt: 'Front view of the t-shirt.' },
+      // Additional images if needed
     ],
+    inStock: 100,
+    price: 25,
+    sizes: ['S', 'M', 'L', 'XL'],
+    slug: 'classic-crewneck-t-shirt',
+    tags: ['casual', 'basic', 't-shirt'],
+    title: 'Classic Crewneck T-Shirt',
+    options: '4 colors',
+    rating: 4,
     colors: [
-      { name: 'Washed Black', bgColor: 'bg-gray-700', selectedColor: 'ring-gray-700' },
       { name: 'White', bgColor: 'bg-white', selectedColor: 'ring-gray-400' },
-      { name: 'Washed Gray', bgColor: 'bg-gray-500', selectedColor: 'ring-gray-500' },
+      { name: 'Black', bgColor: 'bg-black', selectedColor: 'ring-gray-700' },
+      { name: 'Gray', bgColor: 'bg-gray-500', selectedColor: 'ring-gray-500' },
+      { name: 'Navy Blue', bgColor: 'bg-blue-900', selectedColor: 'ring-blue-900' },
     ],
-    description: `
-    The Zip Tote Basket is the perfect midpoint between shopping tote and comfy backpack. With convertible straps, you can hand carry, should sling, or backpack this convenient and spacious bag. The zip top and durable canvas construction keeps your goods protected for all-day use.
-  `,
-    details: [
-      {
-        name: 'Features',
-        items: [
-          'Multiple strap configurations',
-          'Spacious interior with top zip',
-          'Leather handle and tabs',
-          'Interior dividers',
-          'Stainless strap loops',
-          'Double stitched construction',
-          'Water-resistant',
-        ],
-      },
-      // More sections...
-    ],
+    type: 'shirts',
+    details: [],
+    gender: 'unisex',
   },
   {
     id: '2',
-    name: 'Casual Messenger Bag',
-    category: 'clothes',
-    price: '$90',
-    options: '4 colors',
-    size: 'S',
-    rating: 5,
+    description: 'A pair of comfortable slim-fit jeans made from stretch denim fabric. Available in various washes.',
     images: [
-      {
-        id: 1,
-        name: 'Angled view',
-        src: 'https://tailwindui.com/img/ecommerce-images/product-page-03-product-03.jpg',
-        alt: 'Angled front view with bag zipped and handles upright.',
-      },
+      { id: 1, name: 'Front view', src: 'https://tailwindui.com/img/ecommerce-images/product-page-03-product-01.jpg', alt: 'Front view of the jeans.' },
+      // Additional images if needed
     ],
+    inStock: 80,
+    price: 45,
+    sizes: ['XS', 'S', 'M', 'L', 'XL'],
+    slug: 'slim-fit-stretch-jeans',
+    tags: ['jeans', 'denim', 'slim-fit'],
+    title: 'Slim Fit Stretch Jeans',
+    options: '3 washes',
+    rating: 4.5,
     colors: [
-      { name: 'Washed Black', bgColor: 'bg-gray-700', selectedColor: 'ring-gray-700' },
-      { name: 'White', bgColor: 'bg-white', selectedColor: 'ring-gray-400' },
-      { name: 'Washed Gray', bgColor: 'bg-gray-500', selectedColor: 'ring-gray-500' },
+      { name: 'Indigo', bgColor: 'bg-indigo-900', selectedColor: 'ring-indigo-900' },
+      { name: 'Black', bgColor: 'bg-black', selectedColor: 'ring-black' },
+      { name: 'Light Blue', bgColor: 'bg-blue-200', selectedColor: 'ring-blue-200' },
     ],
-    description: `
-    The Casual Messenger Bag is a versatile and stylish bag for everyday use. It features multiple pockets for organization, an adjustable shoulder strap, and a flap closure for added security. Whether you're heading to work or going out with friends, this bag is a perfect companion.
-  `,
-    details: [
-      // Detalles del Casual Messenger Bag...
-    ],
+    type: 'pants',
+    details: [],
+    gender: 'unisex',
   },
-  // Agregar más productos aquí...
+  {
+    id: '4',
+    description: 'A cozy hoodie crafted from soft fleece fabric. Perfect for staying warm on chilly days.',
+    images: [
+      { id: 1, name: 'Front view', src: 'https://tailwindui.com/img/ecommerce-images/product-page-03-product-02.jpg', alt: 'Front view of the hoodie.' },
+      // Additional images if needed
+    ],
+    inStock: 70,
+    price: 55,
+    sizes: ['S', 'M', 'L', 'XL'],
+    slug: 'cozy-fleece-hoodie',
+    tags: ['hoodie', 'fleece', 'warm'],
+    title: 'Cozy Fleece Hoodie',
+    options: '4 colors',
+    rating: 4.7,
+    colors: [
+      { name: 'Gray', bgColor: 'bg-gray-500', selectedColor: 'ring-gray-500' },
+      { name: 'Black', bgColor: 'bg-black', selectedColor: 'ring-black' },
+      { name: 'Navy Blue', bgColor: 'bg-blue-900', selectedColor: 'ring-blue-900' },
+      { name: 'Burgundy', bgColor: 'bg-red-700', selectedColor: 'ring-red-700' },
+    ],
+    type: 'hoodies',
+    details: [],
+    gender: 'unisex',
+  },
+  {
+    id: '5',
+    description: 'A stylish baseball cap made from durable cotton twill fabric. Perfect for adding a sporty touch to your outfit.',
+    images: [
+      { id: 1, name: 'Front view', src: 'https://tailwindui.com/img/ecommerce-images/product-page-03-product-04.jpg', alt: 'Front view of the cap.' },
+      // Additional images if needed
+    ],
+    inStock: 120,
+    price: 20,
+    sizes: [],
+    slug: 'classic-baseball-cap',
+    tags: ['cap', 'hat', 'baseball'],
+    title: 'Classic Baseball Cap',
+    options: '4 colors',
+    rating: 4.3,
+    colors: [
+      { name: 'Black', bgColor: 'bg-black', selectedColor: 'ring-black' },
+      { name: 'Navy Blue', bgColor: 'bg-blue-900', selectedColor: 'ring-blue-900' },
+      { name: 'Gray', bgColor: 'bg-gray-500', selectedColor: 'ring-gray-500' },
+      { name: 'White', bgColor: 'bg-white', selectedColor: 'ring-gray-400' },
+    ],
+    type: 'hats',
+    details: [],
+    gender: 'unisex',
+  },
+  {
+    id: '6',
+    description: 'A versatile denim jacket that adds a touch of casual style to any outfit. Made from durable denim fabric.',
+    images: [
+      { id: 1, name: 'Front view', src: 'https://tailwindui.com/img/ecommerce-images/product-page-03-product-01.jpg', alt: 'Front view of the denim jacket.' },
+      // Additional images if needed
+    ],
+    inStock: 50,
+    price: 70,
+    sizes: ['S', 'M', 'L', 'XL'],
+    slug: 'classic-denim-jacket',
+    tags: ['jacket', 'denim', 'casual'],
+    title: 'Classic Denim Jacket',
+    options: '2 washes',
+    rating: 4.6,
+    colors: [
+      { name: 'Indigo', bgColor: 'bg-indigo-900', selectedColor: 'ring-indigo-900' },
+      { name: 'Black', bgColor: 'bg-black', selectedColor: 'ring-black' },
+    ],
+    type: 'shirts',
+    details: [],
+    gender: 'unisex',
+  },
 ];
 
+interface SeedData {
+  categories: string[];
+  products: typeof products;
+}
 
+export const initialData: SeedData = {
+  categories: [
+    'Shirts', 'Pants', 'Hoodies', 'Hats'
+  ],
+  products: [...products]
+} 
 
 export const relatedProducts: RelatedProducts[] = [
   {
-      id: 1,
-      name: 'Zip Tote Basket',
-      color: 'White and black',
-      href: '#',
-      imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-03-related-product-01.jpg',
-      imageAlt: 'Front of zip tote bag with white canvas, black canvas straps and handle, and black zipper pulls.',
-      price: '$140',
+    id: 1,
+    name: 'Zip Tote Basket',
+    color: 'White and black',
+    href: '#',
+    imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-03-related-product-01.jpg',
+    imageAlt: 'Front of zip tote bag with white canvas, black canvas straps and handle, and black zipper pulls.',
+    price: '$140',
   },
   // More products...
 ]

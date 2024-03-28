@@ -1,18 +1,23 @@
-import {  ValidCategories } from ".";
-
 export interface Product {
-  id: string;
-  name: string
-  category: ValidCategories;
-  price: string
-  rating: number
-  images: Image[]
-  options: string
+  id: string
+  description: string;
+  images: Image[];
+  inStock: number;
+  price: number;
+  sizes: ValidSizes[];
+  slug: string;
+  tags: string[];
+  title: string;
+  options: string;
+  rating: number;
   colors: Color[]
-  size: Size
-  description: string
-  details: Detail[]
+  type: ValidTypes;
+  details: Detail[] | never[],
+  gender: 'men' | 'women' | 'kid' | 'unisex';
 }
+
+type ValidSizes = 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | 'XXXL';
+type ValidTypes = 'shirts' | 'pants' | 'hoodies' | 'hats';
 
 export interface Image {
   id: number

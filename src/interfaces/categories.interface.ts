@@ -9,4 +9,3 @@ export interface Filter {
     label: string
   }
 
-export type ValidCategories = 'clothes' | 'utils' | 'food' 
