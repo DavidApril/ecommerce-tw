@@ -15,9 +15,9 @@ export function Pagination({ }: Props) {
 
   const totalPages = 100
   const pageString = searchParams.get('page') ?? 1;
-  let currentPage = isNaN( +pageString ) ? 1 : +pageString
+Es    let currentPage = isNaN(+pageString) ? 1 : +pageString
 
-  if( currentPage < 1 ||  isNaN( +pageString ) ) redirect( pathname )
+  if (currentPage < 1 || isNaN(+pageString)) redirect(pathname)
 
   const allPages = generatePaginationNumbers(currentPage, totalPages)
 
@@ -57,14 +57,15 @@ export function Pagination({ }: Props) {
       <div className="hidden md:-mt-px md:flex">
         {
           allPages.map((page, index) => (
-          <Link
-            href={ createPageUrl( page )}
+            <Link
+              key={index}
+              href={createPageUrl(page)}
 
-          className={classNames( page === currentPage ? "inline-flex items-center border-t-2 border-indigo-500 px-4 pt-4 text-sm font-medium text-indigo-600" : 'inline-flex items-center border-t-2 border-transparent px-4 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700')}
-            aria-current="page"
-          >
-            {page}
-          </Link>
+              className={classNames(page === currentPage ? "inline-flex items-center border-t-2 border-indigo-500 px-4 pt-4 text-sm font-medium text-indigo-600" : 'inline-flex items-center border-t-2 border-transparent px-4 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700')}
+              aria-current="page"
+            >
+              {page}
+            </Link>
           ))
         }
       </div>

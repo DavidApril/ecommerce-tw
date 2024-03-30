@@ -1,7 +1,10 @@
+import { getPaginatedProductsWithImages } from "@/actions"
 import { Pagination, ProductGrid } from "@/components"
-import { products } from "@/seed/seed"
 
-export const TrendingProducts = () => {
+export const TrendingProducts = async () => {
+
+    const { products } = await getPaginatedProductsWithImages()
+
   return (
     <section aria-labelledby="trending-heading">
       <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8 lg:pt-32">

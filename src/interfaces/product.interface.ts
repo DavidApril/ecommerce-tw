@@ -1,7 +1,7 @@
 export interface Product {
   id: string
   description: string;
-  images: Image[];
+  images: string[];
   inStock: number;
   price: number;
   sizes: ValidSizes[];
@@ -18,13 +18,6 @@ export interface Product {
 
 type ValidSizes = 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | 'XXXL';
 type ValidTypes = 'shirts' | 'pants' | 'hoodies' | 'hats';
-
-export interface Image {
-  id: number
-  name: string
-  src: string
-  alt: string
-}
 
 export interface Color {
   name: string
