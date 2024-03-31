@@ -10,7 +10,7 @@ interface Props {
 
 export default function ({ params }: Props) {
     const { slug } = params;
-    const product = products.find(product => product.id === slug)
+    const product = products.find(product => product.slug === slug)
 
     if (!product) notFound()
 
