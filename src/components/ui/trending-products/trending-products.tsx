@@ -1,9 +1,14 @@
 import { getPaginatedProductsWithImages } from "@/actions"
 import { Pagination, ProductGrid } from "@/components"
+import { Product } from "@/interfaces";
 
-export const TrendingProducts = async () => {
+interface Props {
+  products?:number,
+  totalPages: number,
+}
 
-    const { products } = await getPaginatedProductsWithImages()
+
+export const TrendingProducts =  ({ products, totalPages }: Props) => {
 
   return (
     <section aria-labelledby="trending-heading">
@@ -20,14 +25,14 @@ export const TrendingProducts = async () => {
 
         <ProductGrid products={products} />
 
-        <Pagination totalPage={ 5 } />
+        <Pagination totalPages={totalPages} />
 
         <div className="mt-8 text-sm md:hidden">
           <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
             Shop the collection
             <span aria-hidden="true"> &rarr;</span>
           </a>
-          </div>
+        </div>
 
 
       </div>

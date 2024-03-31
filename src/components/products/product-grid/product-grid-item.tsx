@@ -24,8 +24,8 @@ export const ProductGridItem = ({ product }: Props) => {
             <div className="aspect-h-4 aspect-w-3 bg-gray-200 sm:aspect-none group-hover:opacity-75 sm:h-96">
                 <Link href={`/product/${product.id}`}>
                     <Image
-                        src={ displayImage.src }
-                        alt={ displayImage.alt || '' }
+                        src={ displayImage?.src }
+                        alt={ displayImage?.alt || '' }
                         className="h-full w-full object-cover object-center sm:h-full sm:w-full"
                         width={500}
                         height={500}
