@@ -1,5 +1,6 @@
 'use server'
 import prisma from '@/lib/prisma'
+
 export const getPaginatedProductsWithImages = async () => {
     try {
         const products = await prisma.product.findMany({
@@ -7,20 +8,24 @@ export const getPaginatedProductsWithImages = async () => {
                 ProductImage: {
                     take: 2,
                     select: {
-                        url: true
+                        id: true,
+                        name: true,
+                        src: true,
+                        alt: true,
                     }
                 }
             }
         })
 
-        
         return {
             products: products.map(product => ({
                 ...product,
                 images: product.ProductImage.map( image => {
-                    console.log(image)
                     return {
-                        url: image.url,
+                        id: image.id,
+                        name: image.name,
+                        src: image.src,
+                        alt: image.alt,
                     }
                 })
             }))

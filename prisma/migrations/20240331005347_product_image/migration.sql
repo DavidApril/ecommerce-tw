@@ -13,7 +13,7 @@ ADD COLUMN     "rating" INTEGER NOT NULL;
 CREATE TABLE "ProductImage" (
     "id" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
-    "url" TEXT NOT NULL,
+    "src" TEXT NOT NULL,
     "alt" TEXT,
     "productId" TEXT NOT NULL,
 

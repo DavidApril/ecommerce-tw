@@ -28,7 +28,7 @@ async function main() {
 
     // Productos
     products.forEach(async (product) => {
-        const { type, images, options, rating, colors, details, ...rest } = product;
+        const { type, images, colors,details, ...rest } = product;
         const dbProduct = await prisma.product.create({
             data: {
                 ...rest,
@@ -37,8 +37,10 @@ async function main() {
         })
         // Images
         const imagesData = images.map(image => ({
-            url: image.src,
-            productId: dbProduct.id
+            productId: dbProduct.id,
+            name: image.name,
+            src: image.src,
+            alt: image.alt
         }));
 
         await prisma.productImage.createMany({

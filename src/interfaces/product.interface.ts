@@ -1,28 +1,37 @@
+
 export interface Product {
   id: string
+  title: string;
   description: string;
-  images: string[];
   inStock: number;
   price: number;
-  sizes: ValidSizes[];
+  sizes: Size[];
   slug: string;
   tags: string[];
-  title: string;
-  options: string;
+  gender: 'men' | 'women' | 'kid' | 'unisex';
   rating: number;
+  options: string;
+  images: Image[];
   colors: Color[]
   type: ValidTypes;
   details: Detail[] | never[],
-  gender: 'men' | 'women' | 'kid' | 'unisex';
 }
 
 type ValidSizes = 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | 'XXXL';
 type ValidTypes = 'shirts' | 'pants' | 'hoodies' | 'hats';
+type Gender = "men" | "women" | "kid" | "unisex"
 
 export interface Color {
   name: string
   bgColor: string
   selectedColor: string
+}
+
+export interface Image {
+  id: number
+  name: string;
+  alt?: string;
+  src: string;
 }
 
 export interface Detail {
