@@ -41,9 +41,7 @@ async function main() {
             src: image.src,
             alt: image.alt
         }));
-        await prisma.productImage.createMany({
-            data: imagesData
-        })
+        await prisma.productImage.createMany({ data: imagesData })
 
         // Colors
         const colorsData = colors.map( color => ({
@@ -51,9 +49,15 @@ async function main() {
             name: color.name,
             bgColor: color.bgColor,
         }))
-        await prisma.productColors.createMany({
-            data: colorsData
-        })
+        await prisma.productColors.createMany({ data: colorsData })
+
+        // Details
+        const detailsData = details.map( details => ({
+            productId: dbProduct.id,
+            name: details.name,
+            items: details.items.map(item => item) 
+        }))
+        await prisma.productDetails.createMany({ data: detailsData })
     })
     
     console.log('seed executed correctly')

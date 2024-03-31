@@ -76,7 +76,7 @@ model ProductColors {
 model ProductDetails {
   id    Int    @id @default(autoincrement())
   name  String
-  items String
+  items String[]
 
   product   Product @relation(fields: [productId], references: [id])
   productId String

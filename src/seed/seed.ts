@@ -24,7 +24,16 @@ export const products: Product[] = [
       { name: 'Navy Blue', bgColor: 'bg-blue-900' },
     ],
     type: 'shirts',
-    details: [],
+    details: [
+      {
+        name: 'Material',
+        items: ['Durable denim fabric']
+      },
+      {
+        name: 'Care Instructions',
+        items: ['Machine wash cold', 'Tumble dry low', 'Do not bleach', 'Warm iron if needed']
+      },
+    ],
     gender: 'unisex',
   },
   {
@@ -48,7 +57,16 @@ export const products: Product[] = [
       { name: 'Light Blue', bgColor: 'bg-blue-200' },
     ],
     type: 'pants',
-    details: [],
+    details: [
+      {
+        name: 'Material',
+        items: ['Durable denim fabric']
+      },
+      {
+        name: 'Care Instructions',
+        items: ['Machine wash cold', 'Tumble dry low', 'Do not bleach', 'Warm iron if needed']
+      },
+    ],
     gender: 'unisex',
   },
   {
@@ -73,7 +91,16 @@ export const products: Product[] = [
       { name: 'Burgundy', bgColor: 'bg-red-700' },
     ],
     type: 'hoodies',
-    details: [],
+    details: [
+      {
+        name: 'Material',
+        items: ['Durable denim fabric']
+      },
+      {
+        name: 'Care Instructions',
+        items: ['Machine wash cold', 'Tumble dry low', 'Do not bleach', 'Warm iron if needed']
+      },
+    ],
     gender: 'unisex',
   },
   {
@@ -98,7 +125,16 @@ export const products: Product[] = [
       { name: 'White', bgColor: 'bg-white' },
     ],
     type: 'hats',
-    details: [],
+    details: [
+      {
+        name: 'Material',
+        items: ['Durable denim fabric']
+      },
+      {
+        name: 'Care Instructions',
+        items: ['Machine wash cold', 'Tumble dry low', 'Do not bleach', 'Warm iron if needed']
+      },
+    ],
     gender: 'unisex',
   },
   {
@@ -121,7 +157,16 @@ export const products: Product[] = [
       { name: 'Black', bgColor: 'bg-black' },
     ],
     type: 'shirts',
-    details: [],
+    details: [
+      {
+        name: 'Material',
+        items: ['Durable denim fabric']
+      },
+      {
+        name: 'Care Instructions',
+        items: ['Machine wash cold', 'Tumble dry low', 'Do not bleach', 'Warm iron if needed']
+      },
+    ],
     gender: 'unisex',
   },
   {
@@ -144,7 +189,16 @@ export const products: Product[] = [
       { name: 'Black', bgColor: 'bg-black' },
     ],
     type: 'shirts',
-    details: [],
+    details: [
+      {
+        name: 'Material',
+        items: ['Durable denim fabric']
+      },
+      {
+        name: 'Care Instructions',
+        items: ['Machine wash cold', 'Tumble dry low', 'Do not bleach', 'Warm iron if needed']
+      },
+    ],
     gender: 'unisex',
   },
   {
@@ -167,7 +221,16 @@ export const products: Product[] = [
       { name: 'Black', bgColor: 'bg-black' },
     ],
     type: 'shirts',
-    details: [],
+    details: [
+      {
+        name: 'Material',
+        items: ['Durable denim fabric']
+      },
+      {
+        name: 'Care Instructions',
+        items: ['Machine wash cold', 'Tumble dry low', 'Do not bleach', 'Warm iron if needed']
+      },
+    ],
     gender: 'unisex',
   },
   {
@@ -190,7 +253,16 @@ export const products: Product[] = [
       { name: 'Black', bgColor: 'bg-black' },
     ],
     type: 'shirts',
-    details: [],
+    details: [
+      {
+        name: 'Material',
+        items: ['Durable denim fabric']
+      },
+      {
+        name: 'Care Instructions',
+        items: ['Machine wash cold', 'Tumble dry low', 'Do not bleach', 'Warm iron if needed']
+      },
+    ],
     gender: 'unisex',
   },
   {
@@ -213,7 +285,16 @@ export const products: Product[] = [
       { name: 'Black', bgColor: 'bg-black' },
     ],
     type: 'shirts',
-    details: [],
+    details: [
+      {
+        name: 'Material',
+        items: ['Durable denim fabric']
+      },
+      {
+        name: 'Care Instructions',
+        items: ['Machine wash cold', 'Tumble dry low', 'Do not bleach', 'Warm iron if needed']
+      },
+    ],
     gender: 'unisex',
   },
   {
@@ -236,7 +317,16 @@ export const products: Product[] = [
       { name: 'Black', bgColor: 'bg-black' },
     ],
     type: 'shirts',
-    details: [],
+    details: [
+      {
+        name: 'Material',
+        items: ['Durable denim fabric']
+      },
+      {
+        name: 'Care Instructions',
+        items: ['Machine wash cold', 'Tumble dry low', 'Do not bleach', 'Warm iron if needed']
+      },
+    ],
     gender: 'unisex',
   },
 ];
@@ -251,7 +341,7 @@ export const initialData: SeedData = {
     'Shirts', 'Pants', 'Hoodies', 'Hats'
   ],
   products: [...products]
-} 
+}
 
 export const relatedProducts: RelatedProducts[] = [
   {

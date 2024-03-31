@@ -17,6 +17,12 @@ export const getProductBySlug = async ( slug: string ) => {
                         name: true,
                         bgColor: true,
                     }
+                },
+                ProductDetails: {
+                    select: {
+                        name: true,
+                        items: true,
+                    }
                 }
             },
             where: { slug }
