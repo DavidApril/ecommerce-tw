@@ -4,7 +4,6 @@ import { initialData } from "./seed";
 
 async function main() {
 
-    // 1. Borrar registros previos
     // await Promise.all( [
     await prisma.productImage.deleteMany();
     await prisma.product.deleteMany();
@@ -28,7 +27,7 @@ async function main() {
 
     // Productos
     products.forEach(async (product) => {
-        const { type, images, colors,details, ...rest } = product;
+        const { type, images, colors, details, ...rest } = product;
         const dbProduct = await prisma.product.create({
             data: {
                 ...rest,
@@ -42,10 +41,21 @@ async function main() {
             src: image.src,
             alt: image.alt
         }));
-
         await prisma.productImage.createMany({
             data: imagesData
         })
+
+        // Colors
+        const colorsData = colors.map( color => ({
+            productId: dbProduct.id,
+            name: color.name,
+            bgColor: color.bgColor,
+        }))
+        await prisma.productColors.createMany({
+            data: colorsData
+        })
+
+
 
     })
     

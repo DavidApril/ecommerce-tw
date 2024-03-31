@@ -11,6 +11,12 @@ export const getProductBySlug = async ( slug: string ) => {
                     select: {
                         src: true,
                     }
+                },
+                ProductColors: {
+                    select: {
+                        name: true,
+                        bgColor: true,
+                    }
                 }
             },
             where: { slug }
@@ -22,7 +28,11 @@ export const getProductBySlug = async ( slug: string ) => {
 
         return {
             ...rest,
-            images: product.ProductImage.map( image => image.src)
+            images: product.ProductImage.map( image => image.src),
+            colors: product.ProductColors.map( color => ({
+                name: color.name,
+                bgColor: color.bgColor
+            }))
         }
 
     } catch (error) {

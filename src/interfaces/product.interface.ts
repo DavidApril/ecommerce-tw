@@ -24,7 +24,6 @@ type Gender = "men" | "women" | "kid" | "unisex"
 export interface Color {
   name: string
   bgColor: string
-  selectedColor: string
 }
 
 export interface Image {

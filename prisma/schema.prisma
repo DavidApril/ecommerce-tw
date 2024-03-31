@@ -47,7 +47,8 @@ model Product {
   category   Category @relation(fields: [categoryId], references: [id])
   categoryId String
 
-  ProductImage ProductImage[]
+  ProductImage  ProductImage[]
+  ProductColors ProductColors[]
 
   @@index([gender])
 }
@@ -57,6 +58,15 @@ model ProductImage {
   name String
   src  String
   alt  String?
+
+  product   Product @relation(fields: [productId], references: [id])
+  productId String
+}
+
+model ProductColors {
+  id            Int    @id @default(autoincrement())
+  name          String
+  bgColor       String
 
   product   Product @relation(fields: [productId], references: [id])
   productId String
