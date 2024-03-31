@@ -1,6 +1,8 @@
 import { products, relatedProducts } from '@/seed/seed'
 import { notFound } from 'next/navigation'
 import { AlsoBought, ImageGallery, ProductInfo } from '@/components'
+import prisma from '@/lib/prisma'
+import { getProductBySlug } from '@/actions'
 
 interface Props {
     params: {
@@ -8,9 +10,10 @@ interface Props {
     }
 }
 
-export default function ({ params }: Props) {
+export default async function ProductBySlugPage({ params }: Props) {
     const { slug } = params;
-    const product = products.find(product => product.slug === slug)
+    // const product = products.find(product => product.id === slug)
+    const product = await getProductBySlug( slug )
 
     if (!product) notFound()
 
