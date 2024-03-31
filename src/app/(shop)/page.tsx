@@ -1,3 +1,5 @@
+export const revalidate = 60
+
 import { getPaginatedProductsWithImages } from '@/actions';
 import { FrontHomePage, PerksSection, TrendingProducts } from '@/components'
 import { redirect } from 'next/navigation';

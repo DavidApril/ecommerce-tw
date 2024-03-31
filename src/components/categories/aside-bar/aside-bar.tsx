@@ -1,3 +1,4 @@
+'use client'
 import { Filter } from "@/interfaces";
 import { useUIStore } from "@/store/ui/ui.store"
 import { PlusIcon } from "@heroicons/react/24/outline"

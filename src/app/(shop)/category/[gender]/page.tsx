@@ -1,22 +1,28 @@
-'use client'
-import { products, filters } from '@/seed/seed'
-import { MobileFilterMenu } from '@/components/ui/mobile-filter/mobile-filter'
-import { ValidCategories } from '@/interfaces'
+export const revalidate = 60
 
-import { AsideBar, ProductGridCategories, Title } from '@/components'
-import { notFound } from 'next/navigation'
+import { MobileFilterMenu } from '@/components/ui/mobile-filter/mobile-filter'
+import { AsideBar, Pagination, ProductGridCategories, Title } from '@/components'
+import { filters } from '@/config/filters'
+import { getPaginatedProductsWithImages } from '@/actions'
+import { Gender } from '@prisma/client'
 
 interface Props {
   params: {
-    id: ValidCategories
+    gender: string;
+  },
+  searchParams: {
+    page: string
   }
 }
 
-export default function ({ params }: Props) {
+export default async function ({ params, searchParams }: Props) {
 
-  const { id } = params; 
-
-  const productByCategory = products.filter( product => product.category === id)
+  const { gender } = params; 
+  
+  const page = searchParams.page ? parseInt( searchParams.page ) : 1;
+  
+  const { products, totalPages } = await getPaginatedProductsWithImages({ page, gender: gender as Gender })
+  const productByCategory = products.filter( product => product.gender == gender)
 
   return (
     <div className="bg-white">
@@ -39,7 +45,7 @@ export default function ({ params }: Props) {
               </h2>
 
               <ProductGridCategories products={ productByCategory }/>
-
+              <Pagination totalPages={totalPages}/>
             </section>
           </div>
         </main>

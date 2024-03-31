@@ -1,14 +1,17 @@
 'use server'
 import prisma from '@/lib/prisma'
+import { Gender } from '@prisma/client';
 
 interface PaginationOptions {
     page?: number;
-    take?: number
+    take?: number;
+    gender?: Gender
 }
 
 export const getPaginatedProductsWithImages = async ({
     page = 1,
     take = 3,
+    gender,
 }:PaginationOptions) => {
 
     if( isNaN(Number(page)) ) page = 1
@@ -16,7 +19,7 @@ export const getPaginatedProductsWithImages = async ({
 
     try {
         const products = await prisma.product.findMany({
-            take: 2,
+            take: take,
             skip: ( page - 1) * take,
             include: {
                 ProductImage: {
@@ -27,10 +30,18 @@ export const getPaginatedProductsWithImages = async ({
                         alt: true,
                     }
                 }
+            },
+            where: {
+                gender: gender
             }
+
         })
 
-        const totalCount = await prisma.product.count({})
+        const totalCount = await prisma.product.count({
+            where: {
+                gender: gender
+            }
+        })
         const totalPages = Math.ceil( totalCount / take ) 
 
         return {
