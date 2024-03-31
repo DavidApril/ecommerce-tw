@@ -53,10 +53,10 @@ model Product {
 }
 
 model ProductImage {
-  id  Int    @id @default(autoincrement())
+  id   Int     @id @default(autoincrement())
   name String
-  url String
-  alt String?
+  url  String
+  alt  String?
 
   product   Product @relation(fields: [productId], references: [id])
   productId String
