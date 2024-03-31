@@ -54,9 +54,6 @@ async function main() {
         await prisma.productColors.createMany({
             data: colorsData
         })
-
-
-
     })
     
     console.log('seed executed correctly')
