@@ -9,7 +9,10 @@ export const getProductBySlug = async ( slug: string ) => {
             include: {
                 ProductImage: {
                     select: {
+                        id: true,
+                        name: true,
                         src: true,
+                        alt: true,
                     }
                 },
                 ProductColors: {
@@ -34,10 +37,19 @@ export const getProductBySlug = async ( slug: string ) => {
 
         return {
             ...rest,
-            images: product.ProductImage.map( image => image.src),
+            images: product.ProductImage.map( image => ({
+                id: image.id,
+                name: image.alt,
+                src: image.src,
+                alt: image.alt,
+            })),
             colors: product.ProductColors.map( color => ({
                 name: color.name,
                 bgColor: color.bgColor
+            })),
+            details: product.ProductDetails.map( details => ({
+                name: details.name,
+                items: details.items
             }))
         }
 

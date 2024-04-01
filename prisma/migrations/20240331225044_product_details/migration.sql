@@ -2,7 +2,7 @@
 CREATE TABLE "ProductDetails" (
     "id" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
-    "items" TEXT NOT NULL,
+    "items" TEXT[],
     "productId" TEXT NOT NULL,
 
     CONSTRAINT "ProductDetails_pkey" PRIMARY KEY ("id")
