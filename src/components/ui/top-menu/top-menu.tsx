@@ -5,17 +5,18 @@ import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon, UserIcon, XMarkIcon } 
 import { classNames } from '@/utils/ui'
 import { navigation } from '@/config/navegation'
 import { useUIStore, useCartStore } from '@/store'
+import Link from 'next/link'
 
 export function NavegationBar() {
 
   const { closeSideMenu, isSideMenuOpen, openSideMenu } = useUIStore();
-  // const totalItemsInCart = useCartStore( state => state.getTotalItems())
+  const totalItemsInCart = useCartStore( state => state.getTotalItems())
 
   const [loaded, setLoaded] = useState<boolean>(false);
 
-  // useEffect(() => {
-  //   setLoaded(true)
-  // },[])
+  useEffect(() => {
+    setLoaded(true)
+  })
 
   return (
     <div className="bg-white">
@@ -337,16 +338,16 @@ export function NavegationBar() {
 
                 {/* Cart */}
                 <div className="ml-4 flow-root lg:ml-6">
-                  <a href="#" className="group -m-2 flex items-center p-2">
+                  <Link href="/cart" className="group -m-2 flex items-center p-2">
                     <ShoppingBagIcon
                       className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
                       aria-hidden="true"
                     />
-                    {/* {
-                      (loaded && totalItemsInCart > 0) && <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">{totalItemsInCart}</span>
-                    } */}
+                    {
+                      (loaded && totalItemsInCart > 0) && <span className="animate-fade-in ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">{totalItemsInCart}</span>
+                    }
                     <span className="sr-only">items in cart, view bag</span>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

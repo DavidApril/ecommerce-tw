@@ -1,10 +1,10 @@
-
-import { AlsoBought, CartItem } from '@/components'
-import { products, relatedProducts } from '@/seed/seed'
+import { AlsoBought, CartItems } from '@/components'
+import { relatedProducts } from '@/seed/seed'
 import { QuestionMarkCircleIcon, XMarkIcon as XMarkIconMini } from '@heroicons/react/20/solid'
 
 
-export default function () {
+export default function CartPage() {
+
   return (
     <div className="bg-white">
       <main className="mx-auto max-w-2xl px-4 pb-24 pt-16 sm:px-6 lg:max-w-7xl lg:px-8">
@@ -17,9 +17,7 @@ export default function () {
             </h2>
 
             <ul role="list" className="divide-y divide-gray-200 border-b border-t border-gray-200">
-              {products.map((product, productIdx) => (
-                <CartItem key={productIdx} productIdx={productIdx} product={product}/>
-              ))}
+                <CartItems />
             </ul>
           </section>
 

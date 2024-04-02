@@ -8,6 +8,7 @@ export * from './ui/perks-section/perks-section';
 export * from './ui/pagination/pagination'
 export * from './ui/alerts/warning-alert/warning-alert'
 export * from './ui/alerts/error-alert/error-alert'
+export * from './ui/loader/loader'
 
 export * from './product/errors/page-not-found'
 export * from './product/image-gallery/image-gallery';

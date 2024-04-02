@@ -17,10 +17,10 @@ export const products: Product[] = [
     options: '4 colors',
     rating: 4,
     colors: [
-      { name: 'White', selectedColor: 'Black', bgColor: 'bg-white' },
-      { name: 'Black', selectedColor: 'Black', bgColor: 'bg-black' },
-      { name: 'Gray', selectedColor: 'Black', bgColor: 'bg-gray-500' },
-      { name: 'Navy Blue', selectedColor: 'Black', bgColor: 'bg-blue-900' },
+      { name: 'White', selectedColor: 'B', bgColor: 'bg-white' },
+      { name: 'Black', selectedColor: 'B', bgColor: 'bg-black' },
+      { name: 'Gray', selectedColor: 'B', bgColor: 'bg-gray-500' },
+      { name: 'Navy Blue', selectedColor: 'B', bgColor: 'bg-blue-900' },
     ],
     type: 'shirts',
     details: [
@@ -50,9 +50,9 @@ export const products: Product[] = [
     options: '3 washes',
     rating: 4.5,
     colors: [
-      { name: 'Indigo', selectedColor: 'Black', bgColor: 'bg-indigo-900' },
-      { name: 'Black', selectedColor: 'Black', bgColor: 'bg-black' },
-      { name: 'Light Blue', selectedColor: 'Black', bgColor: 'bg-blue-200' },
+      { name: 'Indigo', selectedColor: 'B', bgColor: 'bg-indigo-900' },
+      { name: 'Black', selectedColor: 'B', bgColor: 'bg-black' },
+      { name: 'Light Blue', selectedColor: 'B', bgColor: 'bg-blue-200' },
     ],
     type: 'pants',
     details: [
@@ -82,10 +82,10 @@ export const products: Product[] = [
     options: '4 colors',
     rating: 4.7,
     colors: [
-      { name: 'Gray', selectedColor: 'Black', bgColor: 'bg-gray-500' },
-      { name: 'Black', selectedColor: 'Black', bgColor: 'bg-black' },
-      { name: 'Navy Blue', selectedColor: 'Black', bgColor: 'bg-blue-900' },
-      { name: 'Burgundy', selectedColor: 'Black', bgColor: 'bg-red-700' },
+      { name: 'Gray', selectedColor: 'B', bgColor: 'bg-gray-500' },
+      { name: 'Black', selectedColor: 'B', bgColor: 'bg-black' },
+      { name: 'Navy Blue', selectedColor: 'B', bgColor: 'bg-blue-900' },
+      { name: 'Burgundy', selectedColor: 'B', bgColor: 'bg-red-700' },
     ],
     type: 'hoodies',
     details: [
@@ -115,10 +115,10 @@ export const products: Product[] = [
     options: '4 colors',
     rating: 4.3,
     colors: [
-      { name: 'Black', selectedColor: 'Black', bgColor: 'bg-black' },
-      { name: 'Navy Blue', selectedColor: 'Black', bgColor: 'bg-blue-900' },
-      { name: 'Gray', selectedColor: 'Black', bgColor: 'bg-gray-500' },
-      { name: 'White', selectedColor: 'Black', bgColor: 'bg-white' },
+      { name: 'Black', selectedColor: 'B', bgColor: 'bg-black' },
+      { name: 'Navy Blue', selectedColor: 'B', bgColor: 'bg-blue-900' },
+      { name: 'Gray', selectedColor: 'B', bgColor: 'bg-gray-500' },
+      { name: 'White', selectedColor: 'B', bgColor: 'bg-white' },
     ],
     type: 'hats',
     details: [
@@ -148,8 +148,8 @@ export const products: Product[] = [
     options: '2 washes',
     rating: 4.6,
     colors: [
-      { name: 'Indigo', selectedColor: 'Black', bgColor: 'bg-indigo-900' },
-      { name: 'Black', selectedColor: 'Black', bgColor: 'bg-black' },
+      { name: 'Indigo', selectedColor: 'B', bgColor: 'bg-indigo-900' },
+      { name: 'Black', selectedColor: 'B', bgColor: 'bg-black' },
     ],
     type: 'shirts',
     details: [
@@ -179,8 +179,8 @@ export const products: Product[] = [
     options: '2 washes',
     rating: 4.6,
     colors: [
-      { name: 'Indigo', selectedColor: 'Black', bgColor: 'bg-indigo-900' },
-      { name: 'Black', selectedColor: 'Black', bgColor: 'bg-black' },
+      { name: 'Indigo', selectedColor: 'B', bgColor: 'bg-indigo-900' },
+      { name: 'Black', selectedColor: 'B', bgColor: 'bg-black' },
     ],
     type: 'shirts',
     details: [
@@ -210,8 +210,8 @@ export const products: Product[] = [
     options: '2 washes',
     rating: 4.6,
     colors: [
-      { name: 'Indigo', selectedColor: 'Black', bgColor: 'bg-indigo-900' },
-      { name: 'Black', selectedColor: 'Black', bgColor: 'bg-black' },
+      { name: 'Indigo', selectedColor: 'B', bgColor: 'bg-indigo-900' },
+      { name: 'Black', selectedColor: 'B', bgColor: 'bg-black' },
     ],
     type: 'shirts',
     details: [
@@ -241,8 +241,8 @@ export const products: Product[] = [
     options: '2 washes',
     rating: 4.6,
     colors: [
-      { name: 'Indigo', selectedColor: 'Black', bgColor: 'bg-indigo-900' },
-      { name: 'Black', selectedColor: 'Black', bgColor: 'bg-black' },
+      { name: 'Indigo', selectedColor: 'B', bgColor: 'bg-indigo-900' },
+      { name: 'Black', selectedColor: 'B', bgColor: 'bg-black' },
     ],
     type: 'shirts',
     details: [
@@ -272,8 +272,8 @@ export const products: Product[] = [
     options: '2 washes',
     rating: 4.6,
     colors: [
-      { name: 'Indigo', selectedColor: 'Black', bgColor: 'bg-indigo-900' },
-      { name: 'Black', selectedColor: 'Black', bgColor: 'bg-black' },
+      { name: 'Indigo', selectedColor: 'B', bgColor: 'bg-indigo-900' },
+      { name: 'Black', selectedColor: 'B', bgColor: 'bg-black' },
     ],
     type: 'shirts',
     details: [
@@ -303,8 +303,8 @@ export const products: Product[] = [
     options: '2 washes',
     rating: 4.6,
     colors: [
-      { name: 'Indigo', selectedColor: 'Black', bgColor: 'bg-indigo-900' },
-      { name: 'Black', selectedColor: 'Black', bgColor: 'bg-black' },
+      { name: 'Indigo', selectedColor: 'B', bgColor: 'bg-indigo-900' },
+      { name: 'Black', selectedColor: 'B', bgColor: 'bg-black' },
     ],
     type: 'shirts',
     details: [
@@ -332,3 +332,17 @@ export const initialData: SeedData = {
   ],
   products: [...products]
 }
+
+
+export const relatedProducts: RelatedProducts[] = [
+  {
+    id: 1,
+    name: 'Zip Tote Basket',
+    color: 'White and black',
+    href: '#',
+    imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-03-related-product-01.jpg',
+    imageAlt: 'Front of zip tote bag with white canvas, black canvas straps and handle, and black zipper pulls.',
+    price: '$140',
+  },
+  // More products...
+]
