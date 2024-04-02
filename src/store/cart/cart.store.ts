@@ -7,14 +7,38 @@ interface State {
     cart: CartProduct[];
 
     getTotalItems: () => number
+    getSummaryInformation: () => {
+        subTotal: number;
+        tax: number;
+        total: number;
+        itemsInCart: number
+    }
+
     addProductToCart: (product: CartProduct) => void
-    updateProductQuantity: (product: CartProduct, quantity:number) => void
+    updateProductQuantity: (product: CartProduct, quantity: number) => void
+    removeProduct: (product: CartProduct) => void
 }
 
 export const useCartStore = create<State>()(
     persist(
         (set, get) => ({
             cart: [],
+            getTotalItems: () => {
+                const { cart } = get();
+                return cart.reduce((total, item) => total + item.quantity, 0)
+            },
+            getSummaryInformation: () => {
+                const { cart } = get();
+                const subTotal = cart.reduce((subTotal, product) => (product.quantity * product.price) + subTotal, 0)
+                const tax = subTotal * 0.15;
+                const total = subTotal + tax
+                const itemsInCart = cart.reduce((total, item) => total + item.quantity, 0)
+
+                return {
+                    subTotal, tax, total, itemsInCart
+                }
+
+            },
             addProductToCart: (product: CartProduct) => {
                 const { cart } = get()
                 const productInCart = cart.some(
@@ -34,20 +58,23 @@ export const useCartStore = create<State>()(
                 })
                 set({ cart: updatedCartProducts })
             },
-            getTotalItems: () => {
-                const { cart } = get();
-                return cart.reduce( (total, item) => total + item.quantity, 0 )
-            },
-            updateProductQuantity: ( product, quantity ) => {
+            updateProductQuantity: (product, quantity) => {
                 const { cart } = get()
-                const updateCartProducts = cart.map( item => {
-                    if( item.id === product.id && item.color === product.color){
-                        return { ...item, quantity: quantity}
+                const updateCartProducts = cart.map(item => {
+                    if (item.id === product.id && item.color === product.color) {
+                        return { ...item, quantity: quantity }
                     }
                     return item
                 })
-                set({ cart: updateCartProducts})
-            } 
+                set({ cart: updateCartProducts })
+            },
+            removeProduct: (product: CartProduct) => {
+                const { cart } = get();
+                const updatedCartProducts = cart.filter(item => item.id !== product.id || item.color != product.color)
+
+                set({ cart: updatedCartProducts })
+
+            }
         }),
         {
             name: 'shopping-cart'
