@@ -1,9 +1,10 @@
 'use client'
 import { Color, Product, CartProduct } from "@/interfaces"
 import { HeartIcon } from "@heroicons/react/24/outline"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ColorSelector, ErrorAlert, QuantitySelector } from "@/components";
 import { useCartStore } from "@/store";
+import { SuccessNotification } from "@/components";
 
 interface Props {
     product: Product;
@@ -15,6 +16,7 @@ export const AddToCart = ({ product }: Props) => {
     const [posted, setPosted] = useState<boolean>(false)
     const [selectedColor, setSelectedColor] = useState<Color | undefined>()
     const [quantity, setQuantity] = useState<number>(1)
+    const [showNotification, setShowNotification] = useState<boolean>(false)
 
     const AddToCart = () => {
         setPosted(true)
@@ -29,15 +31,21 @@ export const AddToCart = ({ product }: Props) => {
             color: selectedColor,
             image: product.images[0].src
         }
-        console.log( selectedColor )
+        console.log(selectedColor)
         addProductToCart(cartProduct)
+        setShowNotification(true)
         setPosted(false)
         setQuantity(1)
         setSelectedColor(undefined)
     }
 
+    useEffect(() => {
+        setTimeout(() => setShowNotification(false), 3000)
+    }, [showNotification])
+
     return <>
-        <div className="mt-10 grid gap-y-5 ">
+        <div className="mt-10 grid gap-y-5">
+            <SuccessNotification setShow={setShowNotification} show={showNotification} />
             {
                 posted && !selectedColor && <ErrorAlert errors={['You must select a color']} />
             }
