@@ -31,7 +31,6 @@ export const AddToCart = ({ product }: Props) => {
             color: selectedColor,
             image: product.images[0].src
         }
-        console.log(selectedColor)
         addProductToCart(cartProduct)
         setShowNotification(true)
         setPosted(false)
