@@ -1,14 +1,21 @@
 'use client'
-import { Fragment } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { Dialog, Popover, Tab, Transition } from '@headlessui/react'
 import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon, UserIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { classNames } from '@/utils/ui'
 import { navigation } from '@/config/navegation'
-import { useUIStore } from '@/store/ui/ui.store'
+import { useUIStore, useCartStore } from '@/store'
 
 export function NavegationBar() {
 
   const { closeSideMenu, isSideMenuOpen, openSideMenu } = useUIStore();
+  // const totalItemsInCart = useCartStore( state => state.getTotalItems())
+
+  const [loaded, setLoaded] = useState<boolean>(false);
+
+  // useEffect(() => {
+  //   setLoaded(true)
+  // },[])
 
   return (
     <div className="bg-white">
@@ -335,7 +342,9 @@ export function NavegationBar() {
                       className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
                       aria-hidden="true"
                     />
-                    <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">0</span>
+                    {/* {
+                      (loaded && totalItemsInCart > 0) && <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">{totalItemsInCart}</span>
+                    } */}
                     <span className="sr-only">items in cart, view bag</span>
                   </a>
                 </div>
