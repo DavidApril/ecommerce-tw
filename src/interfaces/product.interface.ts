@@ -17,6 +17,16 @@ export interface Product {
   details: Detail[] | never[],
 }
 
+export interface CartProduct {
+  id: string,
+  slug: string,
+  title: string,
+  price: number,
+  quantity: number,
+  color: Color,
+  image: string
+}
+
 export interface Color {
   name: string
   bgColor: string
