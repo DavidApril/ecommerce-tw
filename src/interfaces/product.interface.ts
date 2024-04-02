@@ -1,5 +1,6 @@
 
 export interface Product {
+  id: string
   title: string;
   description: string;
   inStock: number;
@@ -23,6 +24,7 @@ export interface CartProduct {
   title: string,
   price: number,
   quantity: number,
+  inStock: number,
   color: Color,
   image: string
 }

@@ -13,6 +13,7 @@ interface Props {
 
 export const CartItems = () => {
 
+  const updateProductQuantity = useCartStore( state => state.updateProductQuantity)
   const [loaded, setLoaded] = useState<boolean>(false)
   const productsInCart = useCartStore(state => state.cart)
 
@@ -72,7 +73,7 @@ export const CartItems = () => {
             
             <span>{product.inStock ? 'In stock' : `Ships in ${product.leadTime}`}</span>
           </p> */}
-            {/* <QuantitySelector quantity={3} onQuantityChanged={value => console.log(value)} /> */}
+            <QuantitySelector inStock={product.inStock} quantity={product.quantity} onQuantityChanged={ quantity=> updateProductQuantity( product, quantity )} />
           </div>
         </li>
       ))}

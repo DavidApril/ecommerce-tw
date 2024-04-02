@@ -1,4 +1,3 @@
-import { generatePaginationNumbers, classNames } from "@/utils";
 import { ArrowLongLeftIcon, ArrowLongRightIcon, XMarkIcon as XMarkIconMini } from "@heroicons/react/24/outline";
 
 interface Props {
@@ -8,8 +7,6 @@ interface Props {
 }
 
 export const QuantitySelector = ({ quantity, onQuantityChanged, inStock }: Props) => {
-
-  const allPages = generatePaginationNumbers(quantity, inStock);
 
   const onValueChanged = (value: number) => {
     if ((quantity + value < 1) || (quantity + 1 > inStock)) return;
@@ -27,22 +24,12 @@ export const QuantitySelector = ({ quantity, onQuantityChanged, inStock }: Props
         </button>
       </div>
 
-      {/* Current: "border-indigo-500 text-indigo-600", Default: "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" */}
-      {/* inline-flex items-center border-t-2 border-transparent px-4 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700 */}
       <div className="hidden md:-mt-px md:flex">
-        {
-          allPages.map((page, index) => (
-            <button
-              key={index}
-              onClick={() => {
-                if (typeof page === 'number') onQuantityChanged(Number(page))
-              }}
-              className={classNames(page === quantity ? "inline-flex items-center border-t-2 border-indigo-500 px-4 pt-4 text-sm font-medium text-indigo-600 bg-white" : 'inline-flex items-center border-t-2 border-transparent px-4 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700')}
-            >
-              {page}
-            </button>
-          ))
-        }
+        <button
+          className={"inline-flex items-center border-t-2 border-indigo-500 px-4 pt-4 text-sm font-medium text-indigo-600 bg-white"}
+        >
+          {quantity}
+        </button>
       </div>
 
       <div className="-mt-px flex w-0 flex-1 justify-end">
