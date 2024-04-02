@@ -3,7 +3,6 @@ import { Product, RelatedProducts } from "../interfaces";
 
 export const products: Product[] = [
   {
-    id: '1',
     description: 'A classic crewneck t-shirt made from soft cotton fabric. Perfect for everyday wear.',
     images: [
       { id: 1, name: 'Front view', src: 'https://tailwindui.com/img/ecommerce-images/product-page-03-product-03.jpg', alt: 'Front view of the t-shirt.' },
@@ -18,10 +17,10 @@ export const products: Product[] = [
     options: '4 colors',
     rating: 4,
     colors: [
-      { name: 'White', bgColor: 'bg-white' },
-      { name: 'Black', bgColor: 'bg-black' },
-      { name: 'Gray', bgColor: 'bg-gray-500' },
-      { name: 'Navy Blue', bgColor: 'bg-blue-900' },
+      { name: 'White', selectedColor: 'Black', bgColor: 'bg-white' },
+      { name: 'Black', selectedColor: 'Black', bgColor: 'bg-black' },
+      { name: 'Gray', selectedColor: 'Black', bgColor: 'bg-gray-500' },
+      { name: 'Navy Blue', selectedColor: 'Black', bgColor: 'bg-blue-900' },
     ],
     type: 'shirts',
     details: [
@@ -37,7 +36,6 @@ export const products: Product[] = [
     gender: 'unisex',
   },
   {
-    id: '2',
     description: 'A pair of comfortable slim-fit jeans made from stretch denim fabric. Available in various washes.',
     images: [
       { id: 1, name: 'Front view', src: 'https://tailwindui.com/img/ecommerce-images/product-page-03-product-01.jpg', alt: 'Front view of the jeans.' },
@@ -52,9 +50,9 @@ export const products: Product[] = [
     options: '3 washes',
     rating: 4.5,
     colors: [
-      { name: 'Indigo', bgColor: 'bg-indigo-900' },
-      { name: 'Black', bgColor: 'bg-black' },
-      { name: 'Light Blue', bgColor: 'bg-blue-200' },
+      { name: 'Indigo', selectedColor: 'Black', bgColor: 'bg-indigo-900' },
+      { name: 'Black', selectedColor: 'Black', bgColor: 'bg-black' },
+      { name: 'Light Blue', selectedColor: 'Black', bgColor: 'bg-blue-200' },
     ],
     type: 'pants',
     details: [
@@ -70,7 +68,6 @@ export const products: Product[] = [
     gender: 'unisex',
   },
   {
-    id: '3',
     description: 'A cozy hoodie crafted from soft fleece fabric. Perfect for staying warm on chilly days.',
     images: [
       { id: 1, name: 'Front view', src: 'https://tailwindui.com/img/ecommerce-images/product-page-03-product-02.jpg', alt: 'Front view of the hoodie.' },
@@ -85,10 +82,10 @@ export const products: Product[] = [
     options: '4 colors',
     rating: 4.7,
     colors: [
-      { name: 'Gray', bgColor: 'bg-gray-500' },
-      { name: 'Black', bgColor: 'bg-black' },
-      { name: 'Navy Blue', bgColor: 'bg-blue-900' },
-      { name: 'Burgundy', bgColor: 'bg-red-700' },
+      { name: 'Gray', selectedColor: 'Black', bgColor: 'bg-gray-500' },
+      { name: 'Black', selectedColor: 'Black', bgColor: 'bg-black' },
+      { name: 'Navy Blue', selectedColor: 'Black', bgColor: 'bg-blue-900' },
+      { name: 'Burgundy', selectedColor: 'Black', bgColor: 'bg-red-700' },
     ],
     type: 'hoodies',
     details: [
@@ -104,7 +101,6 @@ export const products: Product[] = [
     gender: 'unisex',
   },
   {
-    id: '4',
     description: 'A stylish baseball cap made from durable cotton twill fabric. Perfect for adding a sporty touch to your outfit.',
     images: [
       { id: 1, name: 'Front view', src: 'https://tailwindui.com/img/ecommerce-images/product-page-03-product-04.jpg', alt: 'Front view of the cap.' },
@@ -119,10 +115,10 @@ export const products: Product[] = [
     options: '4 colors',
     rating: 4.3,
     colors: [
-      { name: 'Black', bgColor: 'bg-black' },
-      { name: 'Navy Blue', bgColor: 'bg-blue-900' },
-      { name: 'Gray', bgColor: 'bg-gray-500' },
-      { name: 'White', bgColor: 'bg-white' },
+      { name: 'Black', selectedColor: 'Black', bgColor: 'bg-black' },
+      { name: 'Navy Blue', selectedColor: 'Black', bgColor: 'bg-blue-900' },
+      { name: 'Gray', selectedColor: 'Black', bgColor: 'bg-gray-500' },
+      { name: 'White', selectedColor: 'Black', bgColor: 'bg-white' },
     ],
     type: 'hats',
     details: [
@@ -138,7 +134,6 @@ export const products: Product[] = [
     gender: 'unisex',
   },
   {
-    id: '5',
     description: 'A versatile denim jacket that adds a touch of casual style to any outfit. Made from durable denim fabric.',
     images: [
       { id: 1, name: 'Front view', src: 'https://tailwindui.com/img/ecommerce-images/product-page-03-product-01.jpg', alt: 'Front view of the denim jacket.' },
@@ -153,8 +148,8 @@ export const products: Product[] = [
     options: '2 washes',
     rating: 4.6,
     colors: [
-      { name: 'Indigo', bgColor: 'bg-indigo-900' },
-      { name: 'Black', bgColor: 'bg-black' },
+      { name: 'Indigo', selectedColor: 'Black', bgColor: 'bg-indigo-900' },
+      { name: 'Black', selectedColor: 'Black', bgColor: 'bg-black' },
     ],
     type: 'shirts',
     details: [
@@ -170,7 +165,6 @@ export const products: Product[] = [
     gender: 'unisex',
   },
   {
-    id: '6',
     description: 'A versatile denim jacket that adds a touch of casual style to any outfit. Made from durable denim fabric.',
     images: [
       { id: 1, name: 'Front view', src: 'https://tailwindui.com/img/ecommerce-images/product-page-03-product-01.jpg', alt: 'Front view of the denim jacket.' },
@@ -185,8 +179,8 @@ export const products: Product[] = [
     options: '2 washes',
     rating: 4.6,
     colors: [
-      { name: 'Indigo', bgColor: 'bg-indigo-900' },
-      { name: 'Black', bgColor: 'bg-black' },
+      { name: 'Indigo', selectedColor: 'Black', bgColor: 'bg-indigo-900' },
+      { name: 'Black', selectedColor: 'Black', bgColor: 'bg-black' },
     ],
     type: 'shirts',
     details: [
@@ -202,7 +196,6 @@ export const products: Product[] = [
     gender: 'unisex',
   },
   {
-    id: '7',
     description: 'A versatile denim jacket that adds a touch of casual style to any outfit. Made from durable denim fabric.',
     images: [
       { id: 1, name: 'Front view', src: 'https://tailwindui.com/img/ecommerce-images/product-page-03-product-01.jpg', alt: 'Front view of the denim jacket.' },
@@ -217,8 +210,8 @@ export const products: Product[] = [
     options: '2 washes',
     rating: 4.6,
     colors: [
-      { name: 'Indigo', bgColor: 'bg-indigo-900' },
-      { name: 'Black', bgColor: 'bg-black' },
+      { name: 'Indigo', selectedColor: 'Black', bgColor: 'bg-indigo-900' },
+      { name: 'Black', selectedColor: 'Black', bgColor: 'bg-black' },
     ],
     type: 'shirts',
     details: [
@@ -234,7 +227,6 @@ export const products: Product[] = [
     gender: 'unisex',
   },
   {
-    id: '8',
     description: 'A versatile denim jacket that adds a touch of casual style to any outfit. Made from durable denim fabric.',
     images: [
       { id: 1, name: 'Front view', src: 'https://tailwindui.com/img/ecommerce-images/product-page-03-product-01.jpg', alt: 'Front view of the denim jacket.' },
@@ -249,8 +241,8 @@ export const products: Product[] = [
     options: '2 washes',
     rating: 4.6,
     colors: [
-      { name: 'Indigo', bgColor: 'bg-indigo-900' },
-      { name: 'Black', bgColor: 'bg-black' },
+      { name: 'Indigo', selectedColor: 'Black', bgColor: 'bg-indigo-900' },
+      { name: 'Black', selectedColor: 'Black', bgColor: 'bg-black' },
     ],
     type: 'shirts',
     details: [
@@ -266,7 +258,6 @@ export const products: Product[] = [
     gender: 'unisex',
   },
   {
-    id: '9',
     description: 'A versatile denim jacket that adds a touch of casual style to any outfit. Made from durable denim fabric.',
     images: [
       { id: 1, name: 'Front view', src: 'https://tailwindui.com/img/ecommerce-images/product-page-03-product-01.jpg', alt: 'Front view of the denim jacket.' },
@@ -281,8 +272,8 @@ export const products: Product[] = [
     options: '2 washes',
     rating: 4.6,
     colors: [
-      { name: 'Indigo', bgColor: 'bg-indigo-900' },
-      { name: 'Black', bgColor: 'bg-black' },
+      { name: 'Indigo', selectedColor: 'Black', bgColor: 'bg-indigo-900' },
+      { name: 'Black', selectedColor: 'Black', bgColor: 'bg-black' },
     ],
     type: 'shirts',
     details: [
@@ -298,7 +289,6 @@ export const products: Product[] = [
     gender: 'unisex',
   },
   {
-    id: '10',
     description: 'A versatile denim jacket that adds a touch of casual style to any outfit. Made from durable denim fabric.',
     images: [
       { id: 1, name: 'Front view', src: 'https://tailwindui.com/img/ecommerce-images/product-page-03-product-01.jpg', alt: 'Front view of the denim jacket.' },
@@ -313,8 +303,8 @@ export const products: Product[] = [
     options: '2 washes',
     rating: 4.6,
     colors: [
-      { name: 'Indigo', bgColor: 'bg-indigo-900' },
-      { name: 'Black', bgColor: 'bg-black' },
+      { name: 'Indigo', selectedColor: 'Black', bgColor: 'bg-indigo-900' },
+      { name: 'Black', selectedColor: 'Black', bgColor: 'bg-black' },
     ],
     type: 'shirts',
     details: [
@@ -342,16 +332,3 @@ export const initialData: SeedData = {
   ],
   products: [...products]
 }
-
-export const relatedProducts: RelatedProducts[] = [
-  {
-    id: 1,
-    name: 'Zip Tote Basket',
-    color: 'White and black',
-    href: '#',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-03-related-product-01.jpg',
-    imageAlt: 'Front of zip tote bag with white canvas, black canvas straps and handle, and black zipper pulls.',
-    price: '$140',
-  },
-  // More products...
-]

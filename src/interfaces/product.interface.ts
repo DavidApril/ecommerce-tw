@@ -1,6 +1,5 @@
 
 export interface Product {
-  id: string
   title: string;
   description: string;
   inStock: number;
@@ -13,7 +12,8 @@ export interface Product {
   options: string;
   images: Image[];
   colors: Color[]
-  categoryId: string;
+  type: string
+  categoryId?: string;
   details: Detail[] | never[],
 }
 
@@ -34,10 +34,10 @@ export interface Color {
 }
 
 export interface Image {
-  id: number
-  name: string | null;
-  alt: string | null;
-  src: string;
+  id?: number
+  name: string
+  src: string
+  alt?: string | null
 }
 
 export interface Detail {

@@ -48,6 +48,7 @@ async function main() {
             productId: dbProduct.id,
             name: color.name,
             bgColor: color.bgColor,
+            selectedColor: color.selectedColor
         }))
         await prisma.productColors.createMany({ data: colorsData })
 
