@@ -13,23 +13,20 @@ export interface Product {
   options: string;
   images: Image[];
   colors: Color[]
-  type: ValidTypes;
+  categoryId: string;
   details: Detail[] | never[],
 }
-
-type ValidSizes = 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | 'XXXL';
-type ValidTypes = 'shirts' | 'pants' | 'hoodies' | 'hats';
-type Gender = "men" | "women" | "kid" | "unisex"
 
 export interface Color {
   name: string
   bgColor: string
+  selectedColor: string
 }
 
 export interface Image {
   id: number
-  name: string;
-  alt?: string;
+  name: string | null;
+  alt: string | null;
   src: string;
 }
 

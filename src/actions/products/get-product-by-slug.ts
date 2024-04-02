@@ -33,7 +33,7 @@ export const getProductBySlug = async ( slug: string ) => {
 
         if ( !product ) return null
 
-        const { ProductImage, ...rest } = product
+        const { ProductImage, ProductColors, ProductDetails, ...rest } = product
 
         return {
             ...rest,

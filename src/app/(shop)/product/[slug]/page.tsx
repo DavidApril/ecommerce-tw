@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation'
-import { AlsoBought, ImageGallery, ProductInfo } from '@/components'
+import { AddToCart, ImageGallery, ProductInfo } from '@/components'
 import { getProductBySlug } from '@/actions'
+import { Product } from '@/interfaces'
 
 interface Props {
     params: {
@@ -24,10 +25,8 @@ export default async function ProductBySlugPage({ params }: Props) {
                         <ImageGallery images={product.images} />
 
                         {/* Product info */}
-                        <ProductInfo product={product} />
-
+                        <ProductInfo product={product as Product} />
                     </div>
-
                     {/* <AlsoBought relatedProducts={relatedProducts}/> */}
                 </div>
             </main>
