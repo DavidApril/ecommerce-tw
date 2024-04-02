@@ -1,6 +1,7 @@
 'use client'
 import { Loader } from "@/components";
 import { useCartStore } from "@/store";
+import { currencyFormat } from "@/utils";
 import { QuestionMarkCircleIcon } from "@heroicons/react/24/outline"
 import { useEffect, useState } from "react"
 
@@ -8,7 +9,7 @@ export const OrderSummary = () => {
 
     const [ loaded, setLoaded ] = useState<boolean>(false);
 
-    const { itemsInCart, subTotal, tax, total } = useCartStore( state => state.getSummaryInformation() )
+    const { subTotal, tax, total } = useCartStore( state => state.getSummaryInformation() )
 
     useEffect(() => {
         setLoaded(true)
@@ -27,7 +28,7 @@ export const OrderSummary = () => {
         <dl className="mt-6 space-y-4">
             <div className="flex items-center justify-between">
                 <dt className="text-sm text-gray-600">Subtotal</dt>
-                <dd className="text-sm font-medium text-gray-900">${subTotal}</dd>
+                <dd className="text-sm font-medium text-gray-900">${currencyFormat(subTotal)}</dd>
             </div>
             {/* <div className="flex items-center justify-between border-t border-gray-200 pt-4">
                 <dt className="flex items-center text-sm text-gray-600">
@@ -47,11 +48,11 @@ export const OrderSummary = () => {
                         <QuestionMarkCircleIcon className="h-5 w-5" aria-hidden="true" />
                     </a>
                 </dt>
-                <dd className="text-sm font-medium text-gray-900">${tax}</dd>
+                <dd className="text-sm font-medium text-gray-900">${currencyFormat(tax) }</dd>
             </div>
             <div className="flex items-center justify-between border-t border-gray-200 pt-4">
                 <dt className="text-base font-medium text-gray-900">Order total</dt>
-                <dd className="text-base font-medium text-gray-900">${total}</dd>
+                <dd className="text-base font-medium text-gray-900">${currencyFormat(total)}</dd>
             </div>
         </dl>
 
