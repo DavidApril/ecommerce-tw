@@ -331,7 +331,7 @@ export function NavegationBar() {
                 </a>
 
                 {/* Account */}
-                <a href="#" className="p-2 text-gray-400 hover:text-gray-500 lg:ml-4">
+                <a href="/profile" className="p-2 text-gray-400 hover:text-gray-500 lg:ml-4">
                   <span className="sr-only">Account</span>
                   <UserIcon className="h-6 w-6" aria-hidden="true" />
                 </a>
