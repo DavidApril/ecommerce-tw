@@ -24,6 +24,11 @@ enum Gender {
   unisex
 }
 
+enum Role {
+  admin
+  user
+}
+
 model Category {
   id      String    @id @default(uuid())
   name    String    @unique
@@ -64,9 +69,9 @@ model ProductImage {
 }
 
 model ProductColors {
-  id      Int    @id @default(autoincrement())
-  name    String
-  bgColor String
+  id            Int    @id @default(autoincrement())
+  name          String
+  bgColor       String
   selectedColor String
 
   product   Product @relation(fields: [productId], references: [id])
@@ -74,10 +79,20 @@ model ProductColors {
 }
 
 model ProductDetails {
-  id    Int    @id @default(autoincrement())
+  id    Int      @id @default(autoincrement())
   name  String
   items String[]
 
   product   Product @relation(fields: [productId], references: [id])
   productId String
+}
+
+model User {
+  id            String    @id @default(uuid())
+  name          String
+  email         String    @unique
+  emailVerified DateTime?
+  password      String
+  role          Role      @default(user)
+  image         String?
 }
