@@ -2,15 +2,14 @@
 
 import { useFormState } from "react-dom";
 import { authenticate } from "@/actions";
+import { ErrorAlert, Loader } from "@/components";
 
 export const LoginForm = () => {
 
-    const [ state, dispatch ] = useFormState(authenticate, undefined)
-
-    console.log({state})
+    const [state, dispatch] = useFormState(authenticate, undefined)
 
     return (
-        <form className="space-y-6" action={ dispatch }>
+        <form className="space-y-6" action={dispatch}>
             <div>
                 <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
                     Email address
@@ -50,14 +49,25 @@ export const LoginForm = () => {
                 </div>
             </div>
 
-            <div>
-                <button
-                    type="submit"
-                    className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                >
-                    Sign in
-                </button>
-            </div>
+            {state === 'CredentialsSignin' && <ErrorAlert errors={['Incorrects credentials']} />}
+
+            <LoginButton />
+
         </form>
+    )
+}
+
+function LoginButton() {
+    const { pending } = useFormState();
+    return (
+        <div>
+            <button
+                disabled={pending}
+                type="submit"
+                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            >
+                { pending ? <Loader /> : 'Sign in' }
+            </button>
+        </div>
     )
 }
