@@ -10,7 +10,7 @@ type ValidTypes = 'shirts' | 'pants' | 'hoodies' | 'hats';
 
 export interface SeedProduct {
   description: string;
-  images: Image[];
+  // images: Image[];
   inStock: number;
   price: number;
   colors: Color[];

@@ -1,5 +1,5 @@
 
-import { Detail, SeedProduct } from "../interfaces";
+import { Detail, Product, SeedProduct } from "../interfaces";
 import prisma from "../lib/prisma";
 import { initialData } from "./seed";
 
@@ -34,8 +34,8 @@ async function main() {
     }, {} as Record<string, string>); //<string=shirt, string=categoryID>
 
     // Productos
-    products.forEach(async (product: SeedProduct) => {
-        const { type, tags,...rest } = product;
+    products.forEach(async (product: Product) => {
+        const { type, images, colors, details, ...rest } = product;
         const dbProduct = await prisma.product.create({
             data: {
                 ...rest,
