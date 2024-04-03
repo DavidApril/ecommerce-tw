@@ -1,8 +1,11 @@
-import { Product, RelatedProducts } from "../interfaces";
 
+import bcryptjs from 'bcryptjs'
+import { randomUUID } from "crypto";
+import { Product, RelatedProducts, SeedData } from "../interfaces";
 
 export const products: Product[] = [
   {
+    id: randomUUID(),
     description: 'A classic crewneck t-shirt made from soft cotton fabric. Perfect for everyday wear.',
     images: [
       { id: 1, name: 'Front view', src: 'https://tailwindui.com/img/ecommerce-images/product-page-03-product-03.jpg', alt: 'Front view of the t-shirt.' },
@@ -36,6 +39,7 @@ export const products: Product[] = [
     gender: 'unisex',
   },
   {
+    id: randomUUID(),
     description: 'A pair of comfortable slim-fit jeans made from stretch denim fabric. Available in various washes.',
     images: [
       { id: 1, name: 'Front view', src: 'https://tailwindui.com/img/ecommerce-images/product-page-03-product-01.jpg', alt: 'Front view of the jeans.' },
@@ -68,6 +72,7 @@ export const products: Product[] = [
     gender: 'unisex',
   },
   {
+    id: randomUUID(),
     description: 'A cozy hoodie crafted from soft fleece fabric. Perfect for staying warm on chilly days.',
     images: [
       { id: 1, name: 'Front view', src: 'https://tailwindui.com/img/ecommerce-images/product-page-03-product-02.jpg', alt: 'Front view of the hoodie.' },
@@ -101,6 +106,7 @@ export const products: Product[] = [
     gender: 'unisex',
   },
   {
+    id: randomUUID(),
     description: 'A stylish baseball cap made from durable cotton twill fabric. Perfect for adding a sporty touch to your outfit.',
     images: [
       { id: 1, name: 'Front view', src: 'https://tailwindui.com/img/ecommerce-images/product-page-03-product-04.jpg', alt: 'Front view of the cap.' },
@@ -134,6 +140,7 @@ export const products: Product[] = [
     gender: 'unisex',
   },
   {
+    id: randomUUID(),
     description: 'A versatile denim jacket that adds a touch of casual style to any outfit. Made from durable denim fabric.',
     images: [
       { id: 1, name: 'Front view', src: 'https://tailwindui.com/img/ecommerce-images/product-page-03-product-01.jpg', alt: 'Front view of the denim jacket.' },
@@ -165,6 +172,7 @@ export const products: Product[] = [
     gender: 'unisex',
   },
   {
+    id: randomUUID(),
     description: 'A versatile denim jacket that adds a touch of casual style to any outfit. Made from durable denim fabric.',
     images: [
       { id: 1, name: 'Front view', src: 'https://tailwindui.com/img/ecommerce-images/product-page-03-product-01.jpg', alt: 'Front view of the denim jacket.' },
@@ -196,6 +204,7 @@ export const products: Product[] = [
     gender: 'unisex',
   },
   {
+    id: randomUUID(),
     description: 'A versatile denim jacket that adds a touch of casual style to any outfit. Made from durable denim fabric.',
     images: [
       { id: 1, name: 'Front view', src: 'https://tailwindui.com/img/ecommerce-images/product-page-03-product-01.jpg', alt: 'Front view of the denim jacket.' },
@@ -227,6 +236,7 @@ export const products: Product[] = [
     gender: 'unisex',
   },
   {
+    id: randomUUID(),
     description: 'A versatile denim jacket that adds a touch of casual style to any outfit. Made from durable denim fabric.',
     images: [
       { id: 1, name: 'Front view', src: 'https://tailwindui.com/img/ecommerce-images/product-page-03-product-01.jpg', alt: 'Front view of the denim jacket.' },
@@ -258,6 +268,7 @@ export const products: Product[] = [
     gender: 'unisex',
   },
   {
+    id: randomUUID(),
     description: 'A versatile denim jacket that adds a touch of casual style to any outfit. Made from durable denim fabric.',
     images: [
       { id: 1, name: 'Front view', src: 'https://tailwindui.com/img/ecommerce-images/product-page-03-product-01.jpg', alt: 'Front view of the denim jacket.' },
@@ -289,6 +300,7 @@ export const products: Product[] = [
     gender: 'unisex',
   },
   {
+    id: randomUUID(),
     description: 'A versatile denim jacket that adds a touch of casual style to any outfit. Made from durable denim fabric.',
     images: [
       { id: 1, name: 'Front view', src: 'https://tailwindui.com/img/ecommerce-images/product-page-03-product-01.jpg', alt: 'Front view of the denim jacket.' },
@@ -321,12 +333,21 @@ export const products: Product[] = [
   },
 ];
 
-interface SeedData {
-  categories: string[];
-  products: typeof products;
-}
-
 export const initialData: SeedData = {
+  users: [
+    {
+      email: 'davidagamez04@gmail.com',
+      name: 'David Agámez',
+      password: bcryptjs.hashSync('123456789'),
+      role: 'admin'
+    },
+    {
+      email: 'jesusdavidagamez04@gmail.com',
+      name: 'David Agámez',
+      password: bcryptjs.hashSync('123456789'),
+      role: 'user'
+    }
+  ],
   categories: [
     'Shirts', 'Pants', 'Hoodies', 'Hats'
   ],

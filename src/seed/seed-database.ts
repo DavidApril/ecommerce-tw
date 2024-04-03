@@ -1,16 +1,24 @@
 
+import { Detail, SeedProduct } from "../interfaces";
 import prisma from "../lib/prisma";
 import { initialData } from "./seed";
 
 async function main() {
 
     // await Promise.all( [
+    await prisma.user.deleteMany();
+
     await prisma.productImage.deleteMany();
     await prisma.product.deleteMany();
     await prisma.category.deleteMany();
     // ]);
 
-    const { categories, products } = initialData;
+    const { categories, products, users } = initialData;
+
+    // Users
+    await prisma.user.createMany({
+        data: users
+    })
 
     const categoriesData = categories.map((name) => ({ name }));
 
@@ -26,8 +34,8 @@ async function main() {
     }, {} as Record<string, string>); //<string=shirt, string=categoryID>
 
     // Productos
-    products.forEach(async (product) => {
-        const { type, images, colors, details, ...rest } = product;
+    products.forEach(async (product: SeedProduct) => {
+        const { type, tags,...rest } = product;
         const dbProduct = await prisma.product.create({
             data: {
                 ...rest,
@@ -35,7 +43,7 @@ async function main() {
             }
         })
         // Images
-        const imagesData = images.map(image => ({
+        const imagesData = product.images.map((image) => ({
             productId: dbProduct.id,
             name: image.name,
             src: image.src,
@@ -44,7 +52,7 @@ async function main() {
         await prisma.productImage.createMany({ data: imagesData })
 
         // Colors
-        const colorsData = colors.map( color => ({
+        const colorsData = product.colors.map((color) => ({
             productId: dbProduct.id,
             name: color.name,
             bgColor: color.bgColor,
@@ -53,14 +61,14 @@ async function main() {
         await prisma.productColors.createMany({ data: colorsData })
 
         // Details
-        const detailsData = details.map( details => ({
+        const detailsData = product.details.map((details: Detail) => ({
             productId: dbProduct.id,
             name: details.name,
-            items: details.items.map(item => item) 
+            items: details.items.map(item => item)
         }))
         await prisma.productDetails.createMany({ data: detailsData })
     })
-    
+
     console.log('seed executed correctly')
 }
 
