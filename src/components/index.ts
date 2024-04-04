@@ -31,3 +31,4 @@ export * from './categories/aside-bar/aside-bar'
 export * from './categories/products-grid/products-grid'
 export * from './categories/errors/page-not-found'
 
+export * from './provider/Provider'
