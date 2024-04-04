@@ -1,32 +1,13 @@
-import {
-    BellIcon,
-    XMarkIcon,
-    CreditCardIcon,
-    CubeIcon,
-    FingerPrintIcon,
-    UserCircleIcon,
-    UsersIcon,
-    ArrowLeftEndOnRectangleIcon
-} from '@heroicons/react/24/outline'
-import { classNames } from '@/utils'
 import { auth } from '@/auth.config'
 import { redirect } from 'next/navigation'
-import { logout } from '@/actions'
 import { Aside } from './ui/aside'
-
-const navigation = [
-    { name: 'Home', href: '#' },
-    { name: 'Invoices', href: '#' },
-    { name: 'Clients', href: '#' },
-    { name: 'Expenses', href: '#' },
-]
 
 export default async function ProfilePage() {
 
     const session = await auth();
     if (!session?.user) {
         // redirect('/auth/login?returnTo=/profile')
-        redirect('/');
+        redirect('/auth/login');
     }
 
     return (

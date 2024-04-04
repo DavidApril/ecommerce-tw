@@ -3,10 +3,19 @@
 import { useFormState } from "react-dom";
 import { authenticate } from "@/actions";
 import { ErrorAlert, Loader } from "@/components";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export const LoginForm = () => {
 
+    const router = useRouter();
     const [state, dispatch] = useFormState(authenticate, undefined)
+
+    useEffect(()=> {
+        if( state === 'Success'){
+            router.replace('/')
+        }
+    },[state])
 
     return (
         <form className="space-y-6" action={dispatch}>
