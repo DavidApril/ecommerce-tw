@@ -1,7 +1,7 @@
-import Link from "next/link";
-import { LoginForm } from "./ui/login-form";
+import Link from 'next/link';
+import { RegisterForm } from './ui/register-form';
 
-export default function LoginPage() {
+export default function RegisterPage() {
   return (
     <>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -12,21 +12,24 @@ export default function LoginPage() {
             alt="Your Company"
           />
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-            Sign in to your account
+            Register your credentials
           </h2>
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <LoginForm/>
-
+          <RegisterForm />
+          
           <p className="mt-10 text-center text-sm text-gray-500">
-            Not a member?{' '}
-            <Link href="/auth/register" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
-              Create new account
+            You are a member?{' '}
+            <Link
+              href="/auth/login"
+              className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
+            >
+              Sign in
             </Link>
           </p>
         </div>
       </div>
     </>
-  )
+  );
 }
