@@ -1,7 +1,7 @@
 'use client';
 
-import { RegisterUser } from '@/actions';
-import { ErrorAlert } from '@/components';
+import { RegisterUser, login } from '@/actions';
+import { ErrorAlert, Loader } from '@/components';
 import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
@@ -15,7 +15,7 @@ export const RegisterForm = () => {
   const {
     register,
     handleSubmit,
-    // formState: { errors },
+    formState: { isLoading },
   } = useForm<FormInputs>();
 
   const [ errorMessage, setErrorMessage ] = useState('');
@@ -29,6 +29,8 @@ export const RegisterForm = () => {
       return;
     } 
 
+    await login( email.toLowerCase(), password );
+    window.location.replace('/')
     console.log({ response })
   };
 
@@ -50,7 +52,7 @@ export const RegisterForm = () => {
             autoComplete="name"
             autoFocus
             className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-            {...(register('name'), { required: true })}
+            {...register(('name'), { required: true })}
           />
         </div>
       </div>
@@ -68,7 +70,7 @@ export const RegisterForm = () => {
             type="email"
             autoComplete="email"
             className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-            {...(register('email'), { required: true })}
+            {...register(('email'), { required: true })}
           />
         </div>
       </div>
@@ -96,18 +98,17 @@ export const RegisterForm = () => {
             type="password"
             autoComplete="current-password"
             className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-            {...(register('password'), { required: true })}
+            {...register(('password'), { required: true })}
           />
         </div>
       </div>
 
       <button
-        // disabled={pending}
+        disabled={isLoading}
         type="submit"
         className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
       >
-        Sign up
-        {/* {pending ? <Loader /> : 'Sign in'} */}
+        {isLoading ? <Loader /> : 'Sign in'}
       </button>
 
       {/* {state === 'CredentialsSignin' && <ErrorAlert errors={['Incorrects credentials']} />} */}
