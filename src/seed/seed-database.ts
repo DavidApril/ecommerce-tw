@@ -1,18 +1,26 @@
-import { Detail, Product, SeedProduct } from '../interfaces';
+import { Detail, Product } from '../interfaces';
 import prisma from '../lib/prisma';
 import { initialData } from './seed';
+import { countries } from './seed-countries';
 
 async function main() {
   await Promise.all([
-    await prisma.user.deleteMany(),
-    await prisma.productImage.deleteMany(),
-    await prisma.productColors.deleteMany(),
-    await prisma.productDetails.deleteMany(),
-    await prisma.product.deleteMany(),
-    await prisma.category.deleteMany(),
+    prisma.country.deleteMany(),
+    prisma.user.deleteMany(),
+    prisma.country.deleteMany(),
+    prisma.productImage.deleteMany(),
+    prisma.productColors.deleteMany(),
+    prisma.productDetails.deleteMany(),
+    prisma.product.deleteMany(),
+    prisma.category.deleteMany(),
   ]);
 
   const { categories, products, users } = initialData;
+
+  // Countries
+  await prisma.country.createMany({
+    data: countries
+  })
 
   // Users
   await prisma.user.createMany({
