@@ -1,5 +1,5 @@
 'use client';
-import { setUserAddress } from '@/actions';
+import { deleteUserAddress, setUserAddress } from '@/actions';
 import { Loader } from '@/components';
 import { Country } from '@/interfaces';
 import { useAddressStore } from '@/store';
@@ -64,7 +64,9 @@ export const AddressForm = ({ countries }: Props) => {
 
     if (rememberAddress) {
       setUserAddress(restAddress, session!.user.id);
-    } else {}
+    } else {
+      deleteUserAddress( session!.user.id )
+    }
   };
 
 
