@@ -1,15 +1,24 @@
+import { auth } from '@/auth.config';
 import { BreadCrumbles } from '../ui/bread-crumbles';
 import { AddressForm } from './ui/address-form';
 import { OrderSummary } from './ui/order-summary';
-import { getCountries } from '@/actions';
+import { getCountries, getUserAddress } from '@/actions';
 import { Country } from '@/interfaces';
 
 export default async function AddressPage() {
+  const session = await auth(); 
   const countries: Country[] = await getCountries();
+
+  if( !session?.user ){
+    return (
+      <h1>Error</h1>
+    )
+  }
+
+  const userAddress = await getUserAddress( session.user.id ) ?? undefined;
 
   return (
     <div className="bg-white">
-      {/* Background color split screen for large screens */}
       <div
         className="fixed left-0 top-0 hidden h-full w-1/2 bg-white lg:block"
         aria-hidden="true"
@@ -25,7 +34,7 @@ export default async function AddressPage() {
 
         <OrderSummary />
 
-        <AddressForm countries={countries} />
+        <AddressForm countries={countries} userStoredAddress={userAddress} />
       </main>
     </div>
   );

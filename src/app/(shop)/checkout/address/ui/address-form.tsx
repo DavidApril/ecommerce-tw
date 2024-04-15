@@ -1,12 +1,13 @@
 'use client';
 import { deleteUserAddress, setUserAddress } from '@/actions';
 import { Loader } from '@/components';
-import { Country } from '@/interfaces';
+import { Address, Country } from '@/interfaces';
 import { useAddressStore } from '@/store';
 import { classNames } from '@/utils';
 import { Listbox, Switch, Transition } from '@headlessui/react';
 import { ChevronUpDownIcon, CheckIcon } from '@heroicons/react/24/outline';
 import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 import React, { Fragment, useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
@@ -23,21 +24,24 @@ type FormInputs = {
 
 interface Props {
   countries: Country[];
+  userStoredAddress?: Partial<Address>;
 }
 
-export const AddressForm = ({ countries }: Props) => {
+export const AddressForm = ({ countries, userStoredAddress = {} }: Props) => {
   const {
     handleSubmit,
     register,
-    formState: { isValid },
+    formState: { isValid, isLoading },
     setValue,
     reset,
   } = useForm<FormInputs>({
     defaultValues: {
-      //TODO: read of database
+      ...(userStoredAddress as any),
+      rememberAddress: false,
     },
   });
 
+  const router = useRouter();
   const { data: session } = useSession({ required: true });
   const setAddress = useAddressStore((state) => state.setAddress);
   const address = useAddressStore((state) => state.address);
@@ -45,7 +49,9 @@ export const AddressForm = ({ countries }: Props) => {
   const [selected, setSelected] = useState<Country>(countries[0]);
 
   useEffect(() => {
-    if (address.name) { reset(address) }
+    if (address.name) {
+      reset(address);
+    }
   }, []);
 
   useEffect(() => {
@@ -58,17 +64,18 @@ export const AddressForm = ({ countries }: Props) => {
 
   if (!session) return <Loader />;
 
-  const onSubmit: SubmitHandler<FormInputs> = (data) => {
+  const onSubmit: SubmitHandler<FormInputs> = async (data) => {
     setAddress(data);
     const { rememberAddress, ...restAddress } = data;
 
     if (rememberAddress) {
-      setUserAddress(restAddress, session!.user.id);
+      await setUserAddress(restAddress, session!.user.id);
     } else {
-      deleteUserAddress( session!.user.id )
+      await deleteUserAddress(session!.user.id);
     }
-  };
 
+    router.push('/checkout')
+  };
 
   return (
     <form
@@ -481,10 +488,10 @@ export const AddressForm = ({ countries }: Props) => {
         <div className="mt-10 border-t border-gray-200 pt-6 sm:flex sm:items-center sm:justify-between">
           <button
             type="submit"
-            disabled={!isValid}
+            disabled={!isValid || isLoading}
             className="disabled:bg-gray-500 disabled:cursor-not-allowed w-full rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50 sm:order-last sm:ml-6 sm:w-auto"
           >
-            Continue
+            { !isLoading ? 'Continue' : <Loader/> }
           </button>
           <p className="mt-4 text-center text-sm text-gray-500 sm:mt-0 sm:text-left">
             You won't be charged until the next step.
