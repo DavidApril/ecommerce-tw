@@ -1,9 +1,12 @@
 'use client';
+import { setUserAddress } from '@/actions';
+import { Loader } from '@/components';
 import { Country } from '@/interfaces';
 import { useAddressStore } from '@/store';
 import { classNames } from '@/utils';
 import { Listbox, Switch, Transition } from '@headlessui/react';
 import { ChevronUpDownIcon, CheckIcon } from '@heroicons/react/24/outline';
+import { useSession } from 'next-auth/react';
 import React, { Fragment, useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
@@ -18,8 +21,8 @@ type FormInputs = {
   rememberAddress: boolean;
 };
 
-interface Props{
-  countries: Country[]
+interface Props {
+  countries: Country[];
 }
 
 export const AddressForm = ({ countries }: Props) => {
@@ -35,29 +38,35 @@ export const AddressForm = ({ countries }: Props) => {
     },
   });
 
-  const setAddress = useAddressStore( state => state.setAddress );
-  const address = useAddressStore( state => state.address )
-
-  useEffect(() => {
-    if( address.name ){
-      reset(address)
-    }
-  },[])
-
-  const onSubmit: SubmitHandler<FormInputs> = ( data ) => {
-    setAddress(data)
-  };
-
+  const { data: session } = useSession({ required: true });
+  const setAddress = useAddressStore((state) => state.setAddress);
+  const address = useAddressStore((state) => state.address);
   const [enabled, setEnabled] = useState<boolean>(false);
   const [selected, setSelected] = useState<Country>(countries[0]);
 
-  useEffect(()=>{
-    setValue('country', selected?.name)
-  },[selected])
+  useEffect(() => {
+    if (address.name) { reset(address) }
+  }, []);
 
-  useEffect(()=>{
-    setValue('rememberAddress', enabled)
-  },[enabled])
+  useEffect(() => {
+    setValue('country', selected?.id);
+  }, [selected]);
+
+  useEffect(() => {
+    setValue('rememberAddress', enabled);
+  }, [enabled]);
+
+  if (!session) return <Loader />;
+
+  const onSubmit: SubmitHandler<FormInputs> = (data) => {
+    setAddress(data);
+    const { rememberAddress, ...restAddress } = data;
+
+    if (rememberAddress) {
+      setUserAddress(restAddress, session!.user.id);
+    } else {}
+  };
+
 
   return (
     <form
@@ -272,10 +281,7 @@ export const AddressForm = ({ countries }: Props) => {
             </div>
 
             <div>
-              <Listbox
-                value={selected}
-                onChange={setSelected}
-              >
+              <Listbox value={selected} onChange={setSelected}>
                 {({ open }) => (
                   <>
                     <div>
@@ -286,7 +292,10 @@ export const AddressForm = ({ countries }: Props) => {
                         Country
                       </Listbox.Label>
                       <div className="relative mt-1">
-                        <Listbox.Button {...register('country', { required:true})} className="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        <Listbox.Button
+                          {...register('country', { required: true })}
+                          className="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        >
                           <span className="block truncate">
                             {selected?.name}
                           </span>
@@ -392,7 +401,7 @@ export const AddressForm = ({ countries }: Props) => {
             <Switch.Group
               as="div"
               className="flex items-center justify-between"
-              { ...register('rememberAddress') }
+              {...register('rememberAddress')}
             >
               <span className="flex flex-grow flex-col">
                 <Switch.Label

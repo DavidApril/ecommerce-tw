@@ -11,6 +11,7 @@ CREATE TABLE "UserAddress" (
     "address" TEXT NOT NULL,
     "address2" TEXT,
     "postalCode" TEXT NOT NULL,
+    "city" TEXT NOT NULL,
     "phone" TEXT NOT NULL,
     "countryId" TEXT NOT NULL,
     "userId" TEXT NOT NULL,
