@@ -1,5 +1,6 @@
 'use client';
 import { Country } from '@/interfaces';
+import { useAddressStore } from '@/store';
 import { classNames } from '@/utils';
 import { Listbox, Switch, Transition } from '@headlessui/react';
 import { ChevronUpDownIcon, CheckIcon } from '@heroicons/react/24/outline';
@@ -17,20 +18,7 @@ type FormInputs = {
   rememberAddress: boolean;
 };
 
-const people = [
-  { id: 1, name: 'Wade Cooper' },
-  { id: 2, name: 'Arlene Mccoy' },
-  { id: 3, name: 'Devon Webb' },
-  { id: 4, name: 'Tom Cook' },
-  { id: 5, name: 'Tanya Fox' },
-  { id: 6, name: 'Hellen Schmidt' },
-  { id: 7, name: 'Caroline Schultz' },
-  { id: 8, name: 'Mason Heaney' },
-  { id: 9, name: 'Claudie Smitham' },
-  { id: 10, name: 'Emil Schaefer' },
-];
-
-interface Props {
+interface Props{
   countries: Country[]
 }
 
@@ -39,18 +27,26 @@ export const AddressForm = ({ countries }: Props) => {
     handleSubmit,
     register,
     formState: { isValid },
-    getFieldState,
     setValue,
+    reset,
   } = useForm<FormInputs>({
     defaultValues: {
       //TODO: read of database
     },
   });
 
-  const onSubmit: SubmitHandler<FormInputs> = (data) => {
-    console.log({ data, getFieldState });
-  };
+  const setAddress = useAddressStore( state => state.setAddress );
+  const address = useAddressStore( state => state.address )
 
+  useEffect(() => {
+    if( address.name ){
+      reset(address)
+    }
+  },[])
+
+  const onSubmit: SubmitHandler<FormInputs> = ( data ) => {
+    setAddress(data)
+  };
 
   const [enabled, setEnabled] = useState<boolean>(false);
   const [selected, setSelected] = useState<Country>(countries[0]);
@@ -207,6 +203,23 @@ export const AddressForm = ({ countries }: Props) => {
 
             <div className="sm:col-span-3">
               <label
+                htmlFor="name"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Phone
+              </label>
+              <div className="mt-1">
+                <input
+                  type="text"
+                  id="name"
+                  {...register('phone', { required: true })}
+                  className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                />
+              </div>
+            </div>
+
+            <div className="sm:col-span-2">
+              <label
                 htmlFor="address"
                 className="block text-sm font-medium text-gray-700"
               >
@@ -223,7 +236,7 @@ export const AddressForm = ({ countries }: Props) => {
               </div>
             </div>
 
-            <div className="sm:col-span-3">
+            <div className="sm:col-span-1">
               <label
                 htmlFor="address2"
                 className="block text-sm font-medium text-gray-700"
