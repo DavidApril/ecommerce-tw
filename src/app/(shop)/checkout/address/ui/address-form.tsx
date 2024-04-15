@@ -1,4 +1,5 @@
 'use client';
+import { Country } from '@/interfaces';
 import { classNames } from '@/utils';
 import { Listbox, Switch, Transition } from '@headlessui/react';
 import { ChevronUpDownIcon, CheckIcon } from '@heroicons/react/24/outline';
@@ -29,7 +30,11 @@ const people = [
   { id: 10, name: 'Emil Schaefer' },
 ];
 
-export const AddressForm = () => {
+interface Props {
+  countries: Country[]
+}
+
+export const AddressForm = ({ countries }: Props) => {
   const {
     handleSubmit,
     register,
@@ -46,8 +51,9 @@ export const AddressForm = () => {
     console.log({ data, getFieldState });
   };
 
+
   const [enabled, setEnabled] = useState<boolean>(false);
-  const [selected, setSelected] = useState(people[3]);
+  const [selected, setSelected] = useState<Country>(countries[0]);
 
   useEffect(()=>{
     setValue('country', selected?.name)
@@ -269,7 +275,7 @@ export const AddressForm = () => {
                       <div className="relative mt-1">
                         <Listbox.Button {...register('country', { required:true})} className="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
                           <span className="block truncate">
-                            {selected.name}
+                            {selected?.name}
                           </span>
                           <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                             <ChevronUpDownIcon
@@ -287,9 +293,9 @@ export const AddressForm = () => {
                           leaveTo="opacity-0"
                         >
                           <Listbox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-                            {people.map((person) => (
+                            {countries.map((country) => (
                               <Listbox.Option
-                                key={person.id}
+                                key={country.id}
                                 className={({ active }) =>
                                   classNames(
                                     active
@@ -298,7 +304,7 @@ export const AddressForm = () => {
                                     'relative cursor-default select-none py-2 pl-3 pr-9',
                                   )
                                 }
-                                value={person}
+                                value={country}
                               >
                                 {({ selected, active }) => (
                                   <>
@@ -310,7 +316,7 @@ export const AddressForm = () => {
                                         'block truncate',
                                       )}
                                     >
-                                      {person.name}
+                                      {country.name}
                                     </span>
 
                                     {selected ? (

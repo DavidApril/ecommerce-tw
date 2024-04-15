@@ -1,10 +1,12 @@
-import { classNames } from '@/utils';
-import { Switch } from '@headlessui/react';
 import { BreadCrumbles } from '../ui/bread-crumbles';
 import { AddressForm } from './ui/address-form';
 import { OrderSummary } from './ui/order-summary';
+import { getCountries } from '@/actions';
+import { Country } from '@/interfaces';
 
-export default function AddressPage() {
+export default async function AddressPage() {
+  const countries: Country[] = await getCountries();
+
   return (
     <div className="bg-white">
       {/* Background color split screen for large screens */}
@@ -23,7 +25,7 @@ export default function AddressPage() {
 
         <OrderSummary />
 
-     <AddressForm/>
+        <AddressForm countries={countries} />
       </main>
     </div>
   );
