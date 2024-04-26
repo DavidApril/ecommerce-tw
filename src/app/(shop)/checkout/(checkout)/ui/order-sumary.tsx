@@ -1,5 +1,5 @@
 'use client';
-import { Loader } from '@/components';
+import { ErrorAlert, Loader } from '@/components';
 import { useAddressStore, useCartStore } from '@/store';
 import { currencyFormat } from '@/utils';
 import { QuestionMarkCircleIcon } from '@heroicons/react/24/outline';
@@ -8,12 +8,24 @@ import { useEffect, useState } from 'react';
 
 export const OrderSummary = () => {
   const [loaded, setLoaded] = useState<boolean>(false);
+  const [isPlacingOrder, setIsPlacingOrder] = useState<boolean>(false);
 
+  
   const { itemsInCart, subTotal, tax, total } = useCartStore((state) =>
     state.getSummaryInformation(),
   );
-
+  const cart = useCartStore( state => state.cart)
   const address = useAddressStore((state) => state.address);
+
+  const onPlaceOrder = async () => {
+    setIsPlacingOrder(true);
+    const productsToOrder = cart.map( product => ({
+      productId: product.id,
+      quantity: product.quantity,
+      color: product.color,
+    }))
+    setIsPlacingOrder(false);
+  };
 
   useEffect(() => {
     setLoaded(true);
@@ -63,7 +75,7 @@ export const OrderSummary = () => {
       </dl>
 
       <dl className="mt-6 space-y-4">
-      <div className="flex items-center justify-between  border-t border-gray-200 pt-4">
+        <div className="flex items-center justify-between  border-t border-gray-200 pt-4">
           <dt className="text-sm text-gray-600">No. Products</dt>
           <dd className="text-sm font-medium text-gray-900">
             {itemsInCart} products
@@ -115,11 +127,14 @@ export const OrderSummary = () => {
         </div>
       </dl>
 
-      <div className="mt-6">
+      <div className="my-6">
+        {/* <ErrorAlert errors={['Error at create order']} /> */}
         <Link href="/checkout">
           <button
             type="submit"
-            className="w-full rounded-md border border-transparent bg-indigo-600 px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
+            onClick={ onPlaceOrder }
+            disabled={ isPlacingOrder }
+            className="w-full mt-6 disabled:bg-gray-400 rounded-md border border-transparent bg-indigo-600 px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
           >
             Checkout
           </button>
